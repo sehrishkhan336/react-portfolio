@@ -32,6 +32,7 @@ export default function ProfileContainer() {
             {renderPage()}
 
             <Footer />
+            
         </div>
         
     );

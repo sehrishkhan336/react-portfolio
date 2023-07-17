@@ -6,23 +6,33 @@ export default function AboutMe() {
   return (
     <div className="card">
 
-      <div className="card-header">
+      <div className="c-header">
         <h1>
           About Me
         </h1>
       </div>
 
-      <div className="image is-128x128">
-        <figure className="is-rounded">
-          <img  src={profilePicture} alt="Profile Picture" />
+      <div >
+        <figure className="image is-128x128">
+          <img className="is-rounded image-profile" src={profilePicture} alt="Profile Picture" />
         </figure>
       </div>
 
-        <div className="content">
-          <p>
-            Whatever you want to say about yourself
-          </p>
-        </div>
+      <div className="content">
+        <p>
+          I am a passionate and driven junior developer currently pursuing Full Stack Web Development certification from the UCLA.Although  I have also developed a keen understanding of software development principles, algorithms, and data structures. My coursework has exposed me to various development methodologies and tools, enabling me to adapt quickly to new technologies.
+
+          While I may not have professional experience yet, I am constantly honing my skills through personal projects and collaborations with fellow developers. These experiences have allowed me to explore different facets of development and have instilled in me a strong problem-solving mindset.
+
+          As a junior developer, I am eager to contribute my enthusiasm, creativity, and willingness to learn to a collaborative team environment. I am excited to work alongside experienced professionals, absorbing their expertise and applying it to real-world challenges. I am a quick learner and thrive in dynamic, fast-paced settings.
+
+          In addition to my technical skills, I possess excellent communication and teamwork abilities. I believe in effective collaboration and enjoy working with others to achieve common goals. I am open to feedback and constantly seek opportunities to grow and improve as a developer.
+
+          I am passionate about leveraging technology to create innovative solutions and enhance user experiences. I am excited to embark on my professional journey as a junior developer and contribute to impactful projects that make a difference.
+
+          Thank you for taking the time to learn more about me. I look forward to connecting and exploring potential opportunities to grow and contribute to your team.
+        </p>
+      </div>
 
     </div>
   );

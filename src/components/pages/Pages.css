@@ -1,11 +1,29 @@
 .card {
-    background-color: blue;
-    color: white;
-    margin-bottom: 20px;
+    margin: 5rem;
     padding: 20px;
+    height: 55rem;
   }
   
-  .card-header {
-    font-size: 1.5rem;
+  .image-profile {
+    margin: 3rem;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+ .c-header {
+    font-size: 2rem;
     font-weight: bold;
+    margin: 3rem;
+ }
+
+  .card-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .content {
+    margin: 3rem;
+    inline-size: 1.5;
+    ;
   }
