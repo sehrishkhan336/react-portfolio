@@ -1,0 +1,11 @@
+.card {
+    background-color: blue;
+    color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .card-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Pages.css';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -48,7 +49,7 @@ export default function Contact() {
   };
 
   return (
-    <div>
+    <div className="card">
       <div className="field">
         <label className="label">Name</label>
         <div className="control">

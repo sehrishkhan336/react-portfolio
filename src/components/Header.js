@@ -1,19 +1,20 @@
 import React from "react";
-import profilePicture from '../images/Profilepic.jpg';
-import "./Nav.css";
 
-export default function Nav({ currentPage, handlePageChange }) {
+import "./Header.css";
+
+export default function Header({ currentPage, handlePageChange }) {
     return (
-        <div>
+        <div className="header">
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-menu">
                     <a className="navbar-item active">
-                        <h1> Sehrish Khan </h1>
+                        <h1 className="title"> Sehrish Khan </h1>
                     </a>
                 </div>
 
                 <div id="navbar" className="navbar-menu">
                     <div className="navbar-start">
+
                         <a
                             href="/aboutme"
                             className={currentPage === 'AboutMe' ? 'navbar-item active' : 'navbar-item'}
@@ -44,9 +45,9 @@ export default function Nav({ currentPage, handlePageChange }) {
                                 handlePageChange('Portfolio');
                             }}
                         >
-                            Portfolio
+                            Portfolioz
                         </a>
-                        
+
                         <a
                             href='/resume'
                             className={currentPage === 'Resume' ? 'navbar-item active' : 'navbar-item'}

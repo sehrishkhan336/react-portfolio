@@ -1,0 +1,10 @@
+.header {
+  background-color: gray;
+  padding: 20px;
+}
+
+.title {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 3rem;
+  color: #333;
+}

@@ -1,8 +1,9 @@
 import React from 'react';
+import './Pages.css';
 
 const Portfolio = () => {
   return (
-    <div>
+    <div className="card">
       {/* Your Portfolio content */}
     </div>
   );
