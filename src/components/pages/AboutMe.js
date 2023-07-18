@@ -6,7 +6,7 @@ export default function AboutMe() {
   return (
     <div className="card">
 
-      <div className="c-header">
+      <div className="c-header has-text-dark">
         <h1>
           About Me
         </h1>
@@ -14,15 +14,18 @@ export default function AboutMe() {
 
       <div >
         <figure className="image is-128x128">
-          <img className="is-rounded image-profile" src={profilePicture} alt="Profile Picture" />
+          <img className="is-rounded image-profile" src={profilePicture} alt="Profile" />
         </figure>
       </div>
 
       <div className="content">
         <p>
-          I am a passionate and driven junior developer currently pursuing Full Stack Web Development certification from the UCLA.Although  I have also developed a keen understanding of software development principles, algorithms, and data structures. My coursework has exposed me to various development methodologies and tools, enabling me to adapt quickly to new technologies.
+          I am a passionate and driven junior developer currently pursuing Full Stack Web Development certification from UCLA Bootcamp. Although  I have also developed a keen understanding of software development principles, algorithms, and data structures; my coursework has exposed me to various development methodologies and tools, enabling me to adapt quickly to new technologies.
 
-          While I may not have professional experience yet, I am constantly honing my skills through personal projects and collaborations with fellow developers. These experiences have allowed me to explore different facets of development and have instilled in me a strong problem-solving mindset.
+          While I may not have professional experience yet, I am constantly improving my skills through personal projects and collaborations with fellow developers. These experiences have allowed me to explore different facets of development and have instilled in me a strong problem-solving mindset.
+          </p>
+          <br />
+          <p>
 
           As a junior developer, I am eager to contribute my enthusiasm, creativity, and willingness to learn to a collaborative team environment. I am excited to work alongside experienced professionals, absorbing their expertise and applying it to real-world challenges. I am a quick learner and thrive in dynamic, fast-paced settings.
 

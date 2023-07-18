@@ -49,8 +49,8 @@ export default function Contact() {
     };
 
     return (
-        <div className="card ">
-            <div className="card-form">
+        <div className="card has-background-dark">
+            <div className="content tile">
                 <div className="field">
                     <label className="label">Name</label>
                     <div className="control">
@@ -69,7 +69,7 @@ export default function Contact() {
 
                 <div className="field">
                     <label className="label">Email</label>
-                    <div className="control has-icons-left has-icons-right">
+                    <div className="control has-icons-right">
                         <input
                             className={`input ${formErrors.email ? 'is-danger' : ''}`}
                             type="email"

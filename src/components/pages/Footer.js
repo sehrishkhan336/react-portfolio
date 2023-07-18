@@ -5,7 +5,7 @@ import './Pages.css';
 
 export default function Footer() {
   return (
-    <footer className="footer fixed-bottom">
+    <footer className="footer">
       <div className="content has-text-centered">
         <p className="is-inline-flex has-space">
           <a href="https://github.com" className="icon is-large ml-4">
