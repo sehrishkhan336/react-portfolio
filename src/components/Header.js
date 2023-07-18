@@ -7,18 +7,18 @@ export default function Header({ currentPage, handlePageChange }) {
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-menu">
                     <a className="navbar-item active" href="/">
-                        <h1 className="title has-text-light">Sehrish Khan</h1>
+                        <h1 className="title has-text-dark">Sehrish Khan</h1>
                     </a>
                 </div>
 
-                <div id="nav" className="navbar-menu has-text-light">
+                <div id="nav" className="navbar-menu has-text-dark">
                     <div className="navbar-start">
                         <a
                             href="/aboutme"
                             className={
                                 currentPage === "AboutMe"
-                                    ? "navbar-item active has-text-light"
-                                    : "navbar-item has-text-light"
+                                    ? "navbar-item active has-text-dark"
+                                    : "navbar-item has-text-dark"
                             }
                             onClick={(e) => {
                                 e.preventDefault();
@@ -32,8 +32,8 @@ export default function Header({ currentPage, handlePageChange }) {
                             href="/contact"
                             className={
                                 currentPage === "Contact"
-                                    ? "navbar-item active has-text-light"
-                                    : "navbar-item has-text-light"
+                                    ? "navbar-item active has-text-dark"
+                                    : "navbar-item has-text-dark"
                             }
                             onClick={(e) => {
                                 e.preventDefault();
@@ -47,8 +47,8 @@ export default function Header({ currentPage, handlePageChange }) {
                             href="/portfolio"
                             className={
                                 currentPage === "Portfolio"
-                                    ? "navbar-item active has-text-light"
-                                    : "navbar-item has-text-light"
+                                    ? "navbar-item active has-text-dark"
+                                    : "navbar-item has-text-dark"
                             }
                             onClick={(e) => {
                                 e.preventDefault();
@@ -62,8 +62,8 @@ export default function Header({ currentPage, handlePageChange }) {
                             href="/resume"
                             className={
                                 currentPage === "Resume"
-                                    ? "navbar-item active has-text-light"
-                                    : "navbar-item has-text-light"
+                                    ? "navbar-item active has-text-dark"
+                                    : "navbar-item has-text-dark"
                             }
                             onClick={(e) => {
                                 e.preventDefault();

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './Pages.css';
+import { faEnvelope, faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 export default function Contact() {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -49,69 +52,71 @@ export default function Contact() {
     };
 
     return (
-        <div className="card has-background-dark">
-            <div className="content tile">
-            <h2 className="title">Contact</h2>
-                <div className="field">
-                    <label className="label">Name</label>
-                    <div className="control">
-                        <input
-                            className={`input ${formErrors.name ? 'is-danger' : ''}`}
-                            type="text"
-                            placeholder="Text input"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur}
-                        />
+        <div className="card">
+            <div className="content">
+                <div className="tile">
+                    <h2 className="title">Contact</h2>
+                    <div className="field">
+                        <label className="label">Name</label>
+                        <div className="control">
+                            <input
+                                className={`input ${formErrors.name ? 'is-danger' : ''}`}
+                                type="text"
+                                placeholder="Text input"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                onBlur={handleBlur}
+                            />
+                        </div>
+                        {formErrors.name && <p className="help is-danger">This field is required</p>}
                     </div>
-                    {formErrors.name && <p className="help is-danger">This field is required</p>}
-                </div>
 
-                <div className="field">
-                    <label className="label">Email</label>
-                    <div className="control has-icons-right">
-                        <input
-                            className={`input ${formErrors.email ? 'is-danger' : ''}`}
-                            type="email"
-                            placeholder="Email input"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            onBlur={handleEmailBlur}
-                        />
-                        <span className="icon is-small is-left">
-                            <i className="fas fa-envelope"></i>
-                        </span>
-                        {formErrors.email && (
-                            <span className="icon is-small is-right">
-                                <i className="fas fa-exclamation-triangle"></i>
+                    <div className="field">
+                        <label className="label">Email</label>
+                        <div className="control has-icons-right">
+                            <input
+                                className={`input ${formErrors.email ? 'is-danger' : ''}`}
+                                type="email"
+                                placeholder="Email input"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                onBlur={handleEmailBlur}
+                            />
+                            <span className="icon is-small is-left">
+                                <FontAwesomeIcon icon={faEnvelope} />
                             </span>
-                        )}
+                            {formErrors.email && (
+                                <span className="icon is-small is-right">
+                                    <FontAwesomeIcon icon={faExclamationTriangle} />
+                                </span>
+                            )}
+                        </div>
+                        {formErrors.email && <p className="help is-danger">Invalid email address</p>}
                     </div>
-                    {formErrors.email && <p className="help is-danger">Invalid email address</p>}
-                </div>
 
-                <div className="field">
-                    <label className="label">Message</label>
-                    <div className="control">
-                        <textarea
-                            className={`textarea ${formErrors.message ? 'is-danger' : ''}`}
-                            placeholder="Textarea"
-                            name="message"
-                            value={formData.message}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur}
-                        ></textarea>
+                    <div className="field">
+                        <label className="label">Message</label>
+                        <div className="control">
+                            <textarea
+                                className={`textarea ${formErrors.message ? 'is-danger' : ''}`}
+                                placeholder="Textarea"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleInputChange}
+                                onBlur={handleBlur}
+                            ></textarea>
+                        </div>
+                        {formErrors.message && <p className="help is-danger">This field is required</p>}
                     </div>
-                    {formErrors.message && <p className="help is-danger">This field is required</p>}
-                </div>
 
-                <div className="field is-grouped">
-                    <div className="control">
-                        <button className="button is-link" onClick={handleSubmit}>
-                            Submit
-                        </button>
+                    <div className="field is-grouped">
+                        <div className="control">
+                            <button className="button is-link" onClick={handleSubmit}>
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

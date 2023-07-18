@@ -1,5 +1,6 @@
 import React from 'react';
 import './Pages.css';
+import ResumePDF from '../../downloads/Resume.pdf';
 
 export default function Resume() {
     // Example proficiencies list
@@ -30,7 +31,7 @@ export default function Resume() {
             <div className="card-content">
                 <h2 className="title">Resume</h2>
                 <div className="content">
-                    <a href="./" download className='is-size-6'> 
+                    <a href={ResumePDF} download className='is-size-6'> 
                         Download Resume
                     </a>
                     <br />
