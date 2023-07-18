@@ -7,7 +7,7 @@ export default function AboutMe() {
     <div className="card">
 
       <div className="c-header has-text-dark">
-        <h1>
+        <h1 className='title'>
           About Me
         </h1>
       </div>
