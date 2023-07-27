@@ -1,166 +1,116 @@
 import React from 'react';
 import './Pages.css';
+import ticTacToeAnimation from '../../images/tic-tac-toe.gif';
+import weatherAppAnimation from '../../images/weather-app.gif';
+import schedulerAppAnimation from '../../images/scheduler-app.gif';
+import employeeDatabaseAnimation from '../../images/employee-database.gif';
+import jateAnimation from '../../images/jate.gif';
+import socialMediaAppAnimation from '../../images/social-media-app.gif';
 
 const Portfolio = () => {
     return (
         <div className="card">
             <h2 className="title">Portfolio</h2>
-            <div className="project-grid">
+            <div className=" content project-grid">
+
                 <div className="project">
-                    <div className="card-image">
-                        <figure className="image is-256x256">
-                            <img src="" alt="Placeholder" />
-                        </figure>
-                    </div>
                     <div className="card-content">
                         <div className="media">
-                            <div className="media-left">
-                                <figure className="image is-128x128">
-                                    <img
-                                        src="https://bulma.io/images/placeholders/96x96.png"
-                                        alt="Placeholder"
-                                    />
+                            <div className="style-image">
+                                <figure className="gameanime">
+                                    <img src={weatherAppAnimation} alt="weather Forecast" />
                                 </figure>
                             </div>
-                            <br />
-                            <div className="media-content">
-                                <p className="title is-4">Tic Tac Toe</p>
-                                <p className="subtitle is-6">@reactApp</p>
-                            </div>
                         </div>
-                        <div className="project-detail">
-                            This is a simple Tic Tac Toe game built with React. It was built as part of the React tutorial.
-                            <br />
+                        <div className="project-detail is-size-7">
+                            <p className="title is-4">Weather Forecast</p>
+                            <p className="subtitle is-6">@Bootstrap Library</p>
+                        
                         </div>
                     </div>
                 </div>
 
                 <div className="project">
-                    <div className="card-image">
-                        <figure className="image is-256x256">
-                            <img src="" alt="Placeholder" />
-                        </figure>
-                    </div>
                     <div className="card-content">
                         <div className="media">
-                            <div className="media-left">
-                                <figure className="image is-128x128">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder" />
+                            <div>
+                                <figure className="">
+                                    <img src={ticTacToeAnimation} alt="tic-tac-toe" />
                                 </figure>
                             </div>
-                            <br />
-                            <div className="media-content">
-                                <p className="title is-4">Tic Tac Toe</p>
-                                <p className="subtitle is-6">@reactApp</p>
-                            </div>
                         </div>
-                        <div className="project-detail">
-                            This is a simple Tic Tac Toe game built with React. It was built as part of the React tutorial.
-                            <br />
+                        <div className="project-detail is-size-7">
+                            <p className="title is-4">Tic Tac Toe</p>
+                            <p className="subtitle is-6">@reactApp</p>
+                            
                         </div>
                     </div>
                 </div>
 
                 <div className="project">
-                    <div className="card-image">
-                        <figure className="image is-256x256">
-                            <img src="" alt="Placeholder" />
-                        </figure>
-                    </div>
                     <div className="card-content">
                         <div className="media">
-                            <div className="media-left">
-                                <figure className="image is-128x128">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder" />
+                            <div>
+                                <figure className="gameanime">
+                                    <img src={schedulerAppAnimation} alt="Daily Scheduler" />
                                 </figure>
                             </div>
-                            <br />
-                            <div className="media-content">
-                                <p className="title is-4">Tic Tac Toe</p>
-                                <p className="subtitle is-6">@reactApp</p>
-                            </div>
                         </div>
-                        <div className="project-detail">
-                            This is a simple Tic Tac Toe game built with React. It was built as part of the React tutorial.
-                            <br />
+                        <div className="project-detail is-size-7">
+                            <p className="title is-4">Daily Scheduler</p>
+                            <p className="subtitle is-6">@javaScript</p>
+                           
                         </div>
                     </div>
                 </div>
 
                 <div className="project">
-                    <div className="card-image">
-                        <figure className="image is-256x256">
-                            <img src="" alt="Placeholder" />
-                        </figure>
-                    </div>
                     <div className="card-content">
                         <div className="media">
-                            <div className="media-left">
-                                <figure className="image is-128x128">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder" />
+                            <div>
+                                <figure className="gameanime">
+                                    <img src={employeeDatabaseAnimation} alt="Employee Database" />
                                 </figure>
                             </div>
-                            <br />
-                            <div className="media-content">
-                                <p className="title is-4">Tic Tac Toe</p>
-                                <p className="subtitle is-6">@reactApp</p>
-                            </div>
                         </div>
-                        <div className="project-detail">
-                            This is a simple Tic Tac Toe game built with React. It was built as part of the React tutorial.
-                            <br />
+                        <div className="project-detail is-size-7">
+                            <p className="title is-4">Employee Database</p>
+                            <p className="subtitle is-6">@MySQL</p>
+                           
                         </div>
                     </div>
                 </div>
 
                 <div className="project">
-                    <div className="card-image">
-                        <figure className="image is-256x256">
-                            <img src="" alt="Placeholder" />
-                        </figure>
-                    </div>
                     <div className="card-content">
                         <div className="media">
-                            <div className="media-left">
-                                <figure className="image is-128x128">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder" />
+                            <div>
+                                <figure className="gameanime">
+                                    <img src={jateAnimation} alt="Jate" />
                                 </figure>
                             </div>
-                            <br />
-                            <div className="media-content">
-                                <p className="title is-4">Tic Tac Toe</p>
-                                <p className="subtitle is-6">@reactApp</p>
-                            </div>
                         </div>
-                        <div className="project-detail">
-                            This is a simple Tic Tac Toe game built with React. It was built as part of the React tutorial.
-                            <br />
+                        <div className="project-detail is-size-7">
+                            <p className="title is-4">Employee Database App</p>
+                            <p className="subtitle is-6">@PWB</p>
+                            
                         </div>
                     </div>
                 </div>
 
                 <div className="project">
-                    <div className="card-image">
-                        <figure className="image is-256x256">
-                            <img src="" alt="Placeholder" />
-                        </figure>
-                    </div>
                     <div className="card-content">
                         <div className="media">
-                            <div className="media-left">
-                                <figure className="image is-128x128">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder" />
+                            <div>
+                                <figure className="gameanime">
+                                    <img src={socialMediaAppAnimation} alt="Social Media App" />
                                 </figure>
                             </div>
-                            <br />
-                            <div className="media-content">
-                                <p className="title is-4">Tic Tac Toe</p>
-                                <p className="subtitle is-6">@reactApp</p>
-                            </div>
                         </div>
-                        <div className="project-detail">
-                            This is a simple Tic Tac Toe game built with React. It was built as part of the React tutorial.
-                            <br />
+                        <div className="project-detail is-size-7">
+                            <p className="title is-4">Social Media Backend App</p>
+                            <p className="subtitle is-6">@Mongoose NoSQL</p>
+                           
                         </div>
                     </div>
                 </div>

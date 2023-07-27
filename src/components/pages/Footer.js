@@ -6,7 +6,7 @@ import './Pages.css';
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="content has-text-centered">
+      <div className="has-text-centered">
         <p className="is-inline-flex has-space">
           <a href="https://github.com" className="icon is-large ml-4">
             <FontAwesomeIcon icon={faGithub} size="2x" />
