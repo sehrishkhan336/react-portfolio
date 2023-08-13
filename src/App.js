@@ -1,11 +1,13 @@
-
-import './App.css';
+import React from "react";
+import ProfileContainer from "./components/ProfileContainer";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Portfolio</h1>
-    </div>
+      <>
+
+      <ProfileContainer />
+
+      </>
   );
 }
 
