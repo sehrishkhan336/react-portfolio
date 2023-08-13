@@ -5,13 +5,13 @@ import AboutMe from './pages/AboutMe';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
 import Portfolio from './pages/Portfolio';
-import Footer from './pages/Footer';
+// import Footer from './pages/Footer';
 
 export default function ProfileContainer() {
-  const [currentPage, setCurrentPage] = useState('AboutMe');
+  const [currentPage, setCurrentPage] = useState('About Me');
 
   const renderPage = () => {
-    if (currentPage === 'AboutMe') {
+    if (currentPage === 'About Me') {
       return <AboutMe />;
     }
     if (currentPage === 'Contact') {
@@ -25,16 +25,21 @@ export default function ProfileContainer() {
     }
   };
 
-  const handlePageChange = (page) => setCurrentPage(page);
+  const renderPageKey = currentPage;
+
+  const handlePageChange = (page) => {
+    console.log('handlePageChange', page);
+    setCurrentPage(page);
+  };
 
   return (
     <div>
       <CssBaseline />
       <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-      <Container sx={{ marginTop: 3, marginBottom: 3 }}>
+      <Container sx={{ marginTop: 3, marginBottom: 3 }} key={`${currentPage}-${renderPageKey}`}>
         {renderPage()}
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

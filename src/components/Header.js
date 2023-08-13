@@ -1,28 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@mui/styles';
 import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  drawer: {
-    width: 240,
-  },
-  drawerPaper: {
-    width: 240,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}));
-
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ['About Me', 'Contact', 'Portfolio', 'Resume'];
 
 export default function Header({ currentPage, handlePageChange }) {
-  const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -30,7 +12,7 @@ export default function Header({ currentPage, handlePageChange }) {
   };
 
   const drawer = (
-    <div className={classes.drawer}>
+    <div sx={{ width: 240 }}>
       <Typography variant="h6" align="center" sx={{ my: 2 }}>
         Sehrish Khan
       </Typography>
@@ -52,7 +34,7 @@ export default function Header({ currentPage, handlePageChange }) {
 
   return (
     <div>
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -84,8 +66,8 @@ export default function Header({ currentPage, handlePageChange }) {
         anchor="left"
         open={mobileOpen}
         onClose={handleDrawerToggle}
-        classes={{
-          paper: classes.drawerPaper,
+        sx={{
+          '& .MuiDrawer-paper': { width: 240 },
         }}
       >
         {drawer}
