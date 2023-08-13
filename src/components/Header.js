@@ -1,80 +1,95 @@
-import React from "react";
-import "./Header.css";
+import React from 'react';
+import { makeStyles } from '@mui/styles';
+import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  drawer: {
+    width: 240,
+  },
+  drawerPaper: {
+    width: 240,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}));
+
+const navItems = ['Home', 'About', 'Contact'];
 
 export default function Header({ currentPage, handlePageChange }) {
-    return (
-        <div className="header is-size-5 has-text-primary">
-            <nav className="navbar" role="navigation" aria-label="main navigation">
-                <div className="navbar-menu">
-                    <a className="navbar-item active" href="/">
-                        <h1 className="title has-text-light">Sehrish Khan</h1>
-                    </a>
-                </div>
+  const classes = useStyles();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-                <div id="nav" className="navbar-menu has-text-light">
-                    <div className="navbar-start">
-                        <a
-                            href="/aboutme"
-                            className={
-                                currentPage === "AboutMe"
-                                    ? "navbar-item active has-text-light"
-                                    : "navbar-item has-text-light"
-                            }
-                            onClick={(e) => {
-                                e.preventDefault();
-                                handlePageChange("AboutMe");
-                            }}
-                        >
-                            About Me
-                        </a>
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
-                        <a
-                            href="/contact"
-                            className={
-                                currentPage === "Contact"
-                                    ? "navbar-item active has-text-light"
-                                    : "navbar-item has-text-light"
-                            }
-                            onClick={(e) => {
-                                e.preventDefault();
-                                handlePageChange("Contact");
-                            }}
-                        >
-                            Contact
-                        </a>
+  const drawer = (
+    <div className={classes.drawer}>
+      <Typography variant="h6" align="center" sx={{ my: 2 }}>
+        Sehrish Khan
+      </Typography>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <ListItemButton
+              selected={currentPage === item}
+              onClick={() => handlePageChange(item)}
+            >
+              <ListItemText primary={item} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
-                        <a
-                            href="/portfolio"
-                            className={
-                                currentPage === "Portfolio"
-                                    ? "navbar-item active has-text-light"
-                                    : "navbar-item has-text-light"
-                            }
-                            onClick={(e) => {
-                                e.preventDefault();
-                                handlePageChange("Portfolio");
-                            }}
-                        >
-                            Portfolio
-                        </a>
-
-                        <a
-                            href="/resume"
-                            className={
-                                currentPage === "Resume"
-                                    ? "navbar-item active has-text-light"
-                                    : "navbar-item has-text-light"
-                            }
-                            onClick={(e) => {
-                                e.preventDefault();
-                                handlePageChange("Resume");
-                            }}
-                        >
-                            Resume
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    );
+  return (
+    <div>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap>
+            Sehrish Khan
+          </Typography>
+          <div style={{ marginLeft: 'auto' }}>
+            {navItems.map((item) => (
+              <Button
+                key={item}
+                color="inherit"
+                onClick={() => handlePageChange(item)}
+              >
+                {item}
+              </Button>
+            ))}
+          </div>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="temporary"
+        anchor="left"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </div>
+  );
 }
