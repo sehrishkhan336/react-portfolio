@@ -4,11 +4,10 @@ import { styled } from '@mui/system';
 import profilePicture from '../../images/Profilepic.jpg';
 
 
-const CardWrapper = styled(Card)(({ theme }) => ({
+const CardWrapper = styled(Container)(({ theme }) => ({
   maxWidth: 1100,
-  margin: '0',
+  maxHeight: 1100,
   marginTop: theme.spacing(5),
-  padding: theme.spacing(4),
   textAlign: 'center',
 }));
 
@@ -25,7 +24,7 @@ const AvatarWrapper = styled(Avatar)(({ theme }) => ({
 
 const ContentWrapper = styled('div')(({ theme }) => ({
   marginTop: theme.spacing(4),
-  marginBottom: theme.spacing(4),
+  marginBottom: theme.spacing(100),
   textAlign: 'center',
   color: theme.palette.text.secondary,
   
@@ -33,18 +32,9 @@ const ContentWrapper = styled('div')(({ theme }) => ({
 
 export default function AboutMe() {
   return (
-    <Container
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100wh',
-        height: '100vh',
-        marginTop: 'rem',
-        margin: '0px',
-      }}
-    >
-      <div  >
-        <CardWrapper sx={{ width: '100%', height: '100%', margin: '0px' }}>
+    <Container sx={{ display: 'flex', justifyContent: 'center', width: '100%', height: '100%' }} >
+      <div>
+        <CardWrapper>
           <CardContent >
             <HeaderWrapper>
               <Typography sx={{ marginTop: '2rem' }} variant="h4">About Me</Typography>

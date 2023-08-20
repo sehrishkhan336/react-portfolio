@@ -7,7 +7,6 @@ const Footer = () => {
   return (
     <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, height: '65px' }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        
         <div>
           <IconButton
             aria-label="LinkedIn"
