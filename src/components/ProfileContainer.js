@@ -5,7 +5,7 @@ import AboutMe from './pages/AboutMe';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
 import Portfolio from './pages/Portfolio';
-// import Footer from './pages/Footer';
+import Footer from './pages/Footer';
 
 export default function ProfileContainer() {
   const [currentPage, setCurrentPage] = useState('About Me');
@@ -39,7 +39,7 @@ export default function ProfileContainer() {
       <Container sx={{ marginTop: 3, marginBottom: 3 }} key={`${currentPage}-${renderPageKey}`}>
         {renderPage()}
       </Container>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
