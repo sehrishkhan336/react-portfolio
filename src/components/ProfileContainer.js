@@ -28,7 +28,6 @@ export default function ProfileContainer() {
   const renderPageKey = currentPage;
 
   const handlePageChange = (page) => {
-    console.log('handlePageChange', page);
     setCurrentPage(page);
   };
 
