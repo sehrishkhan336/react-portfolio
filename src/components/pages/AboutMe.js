@@ -5,26 +5,30 @@ import profilePicture from '../../images/Profilepic.jpg';
 
 
 const CardWrapper = styled(Card)(({ theme }) => ({
-  maxWidth: '1100',
-  margin: '0 auto',
-  marginTop: theme.spacing(4),
-  padding: theme.spacing(2),
+  maxWidth: 1100,
+  margin: '0',
+  marginTop: theme.spacing(5),
+  padding: theme.spacing(4),
   textAlign: 'center',
 }));
 
 const HeaderWrapper = styled('div')(({ theme }) => ({
-  marginBottom: theme.spacing(2),
+  marginBottom: theme.spacing(4),
   color: theme.palette.primary.main,
 }));
 
 const AvatarWrapper = styled(Avatar)(({ theme }) => ({
-  width: theme.spacing(15),
-  height: theme.spacing(15),
+  width: theme.spacing(25),
+  height: theme.spacing(25),
   margin: '0 auto',
 }));
 
 const ContentWrapper = styled('div')(({ theme }) => ({
-  marginTop: theme.spacing(2),
+  marginTop: theme.spacing(4),
+  marginBottom: theme.spacing(4),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  
 }));
 
 export default function AboutMe() {
@@ -33,17 +37,17 @@ export default function AboutMe() {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        width: '100%',
-        height: '150vh',
-
-        marginTop: '3rem',
+        width: '100wh',
+        height: '100vh',
+        marginTop: 'rem',
+        margin: '0px',
       }}
     >
-      <div >
-        <CardWrapper sx={{ width: '100%', height: '100%' }}>
+      <div  >
+        <CardWrapper sx={{ width: '100%', height: '100%', margin: '0px' }}>
           <CardContent >
             <HeaderWrapper>
-              <Typography variant="h4">About Me</Typography>
+              <Typography sx={{ marginTop: '2rem' }} variant="h4">About Me</Typography>
             </HeaderWrapper>
 
             <div>
@@ -52,8 +56,10 @@ export default function AboutMe() {
 
             <ContentWrapper>
               <Typography variant="body1">
-                I am a full stack web developer with a background in the medical field. I have a passion for learning and
-                problem solving. I am a team player and I am always looking for ways to improve myself and my skills. I
+                I am a full stack web developer with a background in the project management professional. I have a passion for learning and
+                problem solving. 
+                <br></br>
+                I am a team player and I am always looking for ways to improve myself and my skills. I
                 enjoy working with others and I am always looking for ways to help others.
               </Typography>
             </ContentWrapper>
