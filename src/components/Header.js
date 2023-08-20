@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const navItems = ['About Me', 'Contact', 'Portfolio', 'Resume'];
@@ -18,15 +18,18 @@ export default function Header({ currentPage, handlePageChange }) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton
-              selected={currentPage === item}
-              onClick={() => handlePageChange(item)}
-            >
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
+      {navItems.map((item) => (
+        <Button
+          key={item}
+          color="inherit"
+          onClick={() => handlePageChange(item)}
+          // Highlight the selected button based on currentPage
+          sx={{
+            fontWeight: currentPage === item ? 'bold' : 'normal',
+          }}
+        >
+          {item}
+        </Button>
         ))}
       </List>
     </div>

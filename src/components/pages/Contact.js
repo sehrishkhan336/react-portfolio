@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Card, CardContent, TextField, Button } from '@mui/material';
+import { Card, CardContent, TextField, Button, CardMedia } from '@mui/material';
 import { Container } from '@mui/system';
+import BackgroundImage from '../../images/background.jpg';
 
 export default function Contact() {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -51,9 +52,19 @@ export default function Contact() {
 
     return (
         <Container>
-            <div style={{ padding: '16px' }}>
-                <Card sx={{ maxWidth: 400, margin: '0 auto', marginTop: 4, padding: 2, textAlign: 'center', backgroundColor: theme => theme.palette.background.dark }}>
-                    <CardContent>
+        
+                <Card sx={{ width: '100wh', height: '100vh', display: 'flex'}}>
+                    
+                    <CardMedia sx={{ width: '100wh', height: '100vh' }}>
+                        <img
+                            src={BackgroundImage}
+                            alt="contact" 
+                            style={{ width: '100%', height: '100%' }}
+                            />
+                    </CardMedia>
+
+                    <CardContent sx={{ maxWidth: 600, marginTop: 40,padding: 2, textAlign: 'center' }}>
+                       
                         <TextField
                             label="Name"
                             variant="outlined"
@@ -105,7 +116,7 @@ export default function Contact() {
                         </Button>
                     </CardContent>
                 </Card>
-            </div>
+
         </Container>
     );
 }
