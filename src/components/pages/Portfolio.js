@@ -54,7 +54,7 @@ const Portfolio = () => {
 
     ];
     const handleCardClick = (e, projectLink) => {
-        // Prevent the default behavior of the anchor tag
+   
         e.preventDefault();
 
         // Navigate to the project link
