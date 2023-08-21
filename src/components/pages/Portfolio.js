@@ -1,12 +1,13 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Grid, Typography, Button } from '@mui/material';
-import { Container } from '@mui/system';
+import { Container, ThemeProvider } from '@mui/system';
 import tictactoeimage from '../../images/tic-tac-toe.gif';
 import WeatherDashboardImage from '../../images/weather-dashboard.gif';
 import WorkdaySchedulerImage from '../../images/workday-scheduler.gif';
 import FoodReviewAppImage from '../../images/splash-image.png';
 import RythmixConcertHubImage from '../../images/music-1.gif';
 import DocTalkImage from '../../images/doc-talk.gif';
+import theme from '../../theme';
 
 const Portfolio = () => {
     const projects = [
@@ -54,7 +55,7 @@ const Portfolio = () => {
 
     ];
     const handleCardClick = (e, projectLink) => {
-   
+
         e.preventDefault();
 
         // Navigate to the project link
@@ -62,68 +63,71 @@ const Portfolio = () => {
     };
 
     return (
-        <Container>
-            <div style={{ padding: '16px', marginTop: '20px', width: '100%' }}>
-                <div className="card" style={{ padding: '16px', marginTop: '40px' }}>
-                    <Grid container spacing={2}>
-                        {projects.map((project, index) => (
-                            <Grid item xs={12} sm={6} md={4} key={index}>
-                                <Card
-                                    sx={{
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        justifyContent: 'space-between',
-                                        height: '100%',
-                                        '&:hover': {
-                                            '& .project-link-button': {
-                                                opacity: 1,
-                                                transform: 'translateY(0)',
-                                            },
-                                            '& .card-content': {
-                                                opacity: 1,
-                                                height: 'auto',
-                                            },
-                                        },
-                                    }}
-                                >
-                                    <CardMedia
-                                        component="img"
-                                        src={project.imageSrc}
-                                        alt="Project"
+        <ThemeProvider theme={theme}>
+            <Container>
+                <div style={{ padding: '16px', marginTop: '20px', width: '100%' }}>
+                    <div className="card" style={{ padding: '16px', marginTop: '40px' }}>
+                        <Typography variant='h4' gutterBottom style={{ padding: '16px', color: theme.palette.primary.main }}>Portfolio</Typography>
+                        <Grid container spacing={2}>
+                            {projects.map((project, index) => (
+                                <Grid item xs={12} sm={6} md={4} key={index}>
+                                    <Card
                                         sx={{
-                                            width: '100%',
-                                            height: '350px',
-                                            objectFit: 'cover',
-                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            justifyContent: 'space-between',
+                                            height: '100%',
+                                            '&:hover': {
+                                                '& .project-link-button': {
+                                                    opacity: 1,
+                                                    transform: 'translateY(0)',
+                                                },
+                                                '& .card-content': {
+                                                    opacity: 1,
+                                                    height: 'auto',
+                                                },
+                                            },
                                         }}
-                                        onClick={(e) => handleCardClick(e, project.projectLink)}
-                                    />
-                                    <CardContent className="card-content" sx={{ opacity: 0, height: 0, overflow: 'hidden', transition: 'opacity 0.3s, height 0.3s' }}>
-                                        <Typography variant="h6" gutterBottom>
-                                            {project.title}
-                                        </Typography>
-                                        <Typography variant="body2">{project.description}</Typography>
-                                    </CardContent>
-                                    <Button
-                                        className="project-link-button"
-                                        sx={{
-                                            opacity: 0,
-                                            transform: 'translateY(10px)',
-                                            transition: 'opacity 0.3s, transform 0.3s',
-                                            alignSelf: 'flex-end',
-                                            marginRight: '16px',
-                                        }}
-                                        onClick={(e) => handleCardClick(e, project.projectLink)}
                                     >
-                                        Project Link
-                                    </Button>
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Grid>
+                                        <CardMedia
+                                            component="img"
+                                            src={project.imageSrc}
+                                            alt="Project"
+                                            sx={{
+                                                width: '100%',
+                                                height: '350px',
+                                                objectFit: 'cover',
+                                                cursor: 'pointer',
+                                            }}
+                                            onClick={(e) => handleCardClick(e, project.projectLink)}
+                                        />
+                                        <CardContent className="card-content" sx={{ opacity: 0, height: 0, overflow: 'hidden', transition: 'opacity 0.3s, height 0.3s' }}>
+                                            <Typography variant="h6" gutterBottom>
+                                                {project.title}
+                                            </Typography>
+                                            <Typography variant="body2">{project.description}</Typography>
+                                        </CardContent>
+                                        <Button
+                                            className="project-link-button"
+                                            sx={{
+                                                opacity: 0,
+                                                transform: 'translateY(10px)',
+                                                transition: 'opacity 0.3s, transform 0.3s',
+                                                alignSelf: 'flex-end',
+                                                marginRight: '16px',
+                                            }}
+                                            onClick={(e) => handleCardClick(e, project.projectLink)}
+                                        >
+                                            Project Link
+                                        </Button>
+                                    </Card>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </div>
                 </div>
-            </div>
-        </Container>
+            </Container>
+        </ThemeProvider>
     );
 };
 

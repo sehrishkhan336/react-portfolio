@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Card, CardContent, TextField, Button, CardMedia } from '@mui/material';
-import { Container } from '@mui/system';
+import { Card, CardContent, TextField, Button, CardMedia, Typography } from '@mui/material';
+import { Container, ThemeProvider } from '@mui/system';
 import BackgroundImage from '../../images/background.jpg';
+import theme from '../../theme';
 
 export default function Contact() {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -51,72 +52,74 @@ export default function Contact() {
     };
 
     return (
-        <Container>
-        
-                <Card sx={{ width: '100wh', height: '100vh', display: 'flex'}}>
-                    
-                    <CardMedia sx={{ width: '100wh', height: '100vh' }}>
+        <ThemeProvider theme={theme}>
+            <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '0' }}>
+                <Card>
+                    <CardMedia>
                         <img
                             src={BackgroundImage}
-                            alt="contact" 
-                            style={{ width: '100%', height: '100%' }}
-                            />
+                            alt="contact"
+                            style={{ width: '100%', height: '70%' }}
+                        />
                     </CardMedia>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <Typography variant='h4' gutterBottom style={{ display: 'flex', justifyContent: 'center', padding: '16px', color: theme.palette.primary.main }}>Contact</Typography>
+                        <CardContent sx={{ width: 600, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
-                    <CardContent sx={{ maxWidth: 600, marginTop: 40,padding: 2, textAlign: 'center' }}>
-                       
-                        <TextField
-                            label="Name"
-                            variant="outlined"
-                            fullWidth
-                            sx={{ marginBottom: 2 }}
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur}
-                            error={formErrors.name}
-                            helperText={formErrors.name && 'This field is required'}
-                        />
+                            <TextField
+                                label="Name"
+                                variant="outlined"
+                                fullWidth
+                                sx={{ marginBottom: 2 }}
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                onBlur={handleBlur}
+                                error={formErrors.name}
+                                helperText={formErrors.name && 'This field is required'}
+                            />
 
-                        <TextField
-                            label="Email"
-                            variant="outlined"
-                            fullWidth
-                            sx={{ marginBottom: 2 }}
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            onBlur={handleEmailBlur}
-                            error={formErrors.email}
-                            helperText={formErrors.email ? 'Invalid email address' : ''}
-                        />
+                            <TextField
+                                label="Email"
+                                variant="outlined"
+                                fullWidth
+                                sx={{ marginBottom: 2 }}
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                onBlur={handleEmailBlur}
+                                error={formErrors.email}
+                                helperText={formErrors.email ? 'Invalid email address' : ''}
+                            />
 
-                        <TextField
-                            label="Message"
-                            variant="outlined"
-                            fullWidth
-                            multiline
-                            rows={4}
-                            sx={{ marginBottom: 2 }}
-                            name="message"
-                            value={formData.message}
-                            onChange={handleInputChange}
-                            onBlur={handleBlur}
-                            error={formErrors.message}
-                            helperText={formErrors.message && 'This field is required'}
-                        />
+                            <TextField
+                                label="Message"
+                                variant="outlined"
+                                fullWidth
+                                multiline
+                                rows={4}
+                                sx={{ marginBottom: 2 }}
+                                name="message"
+                                value={formData.message}
+                                onChange={handleInputChange}
+                                onBlur={handleBlur}
+                                error={formErrors.message}
+                                helperText={formErrors.message && 'This field is required'}
+                            />
 
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            sx={{ marginTop: 2 }}
-                            onClick={handleSubmit}
-                        >
-                            Submit
-                        </Button>
-                    </CardContent>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                sx={{ marginTop: 2, marginBottom: 4 }}
+                                onClick={handleSubmit}
+                            >
+                                Submit
+                            </Button>
+                        </CardContent>
+                    </div>
                 </Card>
 
-        </Container>
+            </Container>
+        </ThemeProvider>
     );
 }
