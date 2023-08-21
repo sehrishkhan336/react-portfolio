@@ -3,13 +3,14 @@ import { Card, CardContent, Typography, Button, List, ListItem } from '@mui/mate
 import { Container, ThemeProvider } from '@mui/system';
 import ResumeSehrishKhan from '../../Resume/Sehrish-Khan.pdf'
 import theme from '../../theme';
+import BackgroundImage from '../../images/background.jpg';
 
 const Resume = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <div style={{ padding: '16px' }}>
-          <Card sx={{ width: 1100, height: 1200, padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+          <Card sx={{ width: 1100, height: 1200, padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', backgroundImage: `url(${BackgroundImage})`, backgroundSize: 'contain', backgroundRepeat:'no-repeat' }}>
             <Typography variant='h4' gutterBottom style={{ padding: '16px', color: theme.palette.primary.main }}>Resume</Typography>
             <Button
               variant="contained"
