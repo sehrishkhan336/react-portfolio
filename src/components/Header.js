@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const navItems = ['About Me', 'Contact', 'Portfolio', 'Resume'];
+const navItems = ['About Me', 'Portfolio','Contact', 'Resume'];
 
 export default function Header({ currentPage, handlePageChange }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -13,7 +13,7 @@ export default function Header({ currentPage, handlePageChange }) {
 
   const drawer = (
     <div sx={{ width: 240 }}>
-      <Typography variant="h6" align="center" sx={{ my: 2 }}>
+      <Typography variant="h1">
         Sehrish Khan
       </Typography>
       <Divider />
@@ -24,9 +24,9 @@ export default function Header({ currentPage, handlePageChange }) {
           color="inherit"
           onClick={() => handlePageChange(item)}
           // Highlight the selected button based on currentPage
-          sx={{
-            fontWeight: currentPage === item ? 'bold' : 'normal',
-          }}
+          // sx={{
+          //   fontWeight: currentPage === item ? 'bold' : 'normal',
+          // }}
         >
           {item}
         </Button>
@@ -48,7 +48,7 @@ export default function Header({ currentPage, handlePageChange }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h3" noWrap style={{ fontFamily: 'fantasy' }}>
             Sehrish Khan
           </Typography>
           <div style={{ marginLeft: 'auto' }}>
@@ -57,7 +57,12 @@ export default function Header({ currentPage, handlePageChange }) {
                 key={item}
                 color="inherit"
                 onClick={() => handlePageChange(item)}
-              >
+                // Highlight the selected button based on currentPage
+                sx={{
+                  fontWeight: currentPage === item ? 'bold' : 'normal',
+                  color: currentPage === item ? 'black' : 'inherit',
+                }}
+             >
                 {item}
               </Button>
             ))}
