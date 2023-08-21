@@ -5,28 +5,43 @@ import { Container } from '@mui/system';
 const Resume = () => {
   return (
     <Container>
-    <div style={{ padding: '16px' }}>
-      <Card sx={{ padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
-        <CardContent>
-         
-          <Typography variant="h6" gutterBottom>
-            Experience
-          </Typography>
-          <Typography variant="body1">
-          
-          </Typography>
+      <div style={{ padding: '16px' }}>
+        <Card sx={{ marginTop: '30px', padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+        <a href="../../Resume/Resume-Sehrish-Khan" download>
+            My Resume
+          </a>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              FrontEnd Skills
+            </Typography>
+            <Typography variant="body1">
+              HTML,
+              CSS, 
+              JavaScript, 
+              React, 
+              Bootstrap,
+              Material UI,
+              Bulma,
 
-          <Typography variant="h6" gutterBottom>
-            Education
-          </Typography>
-          <Typography variant="body1">
-        
-          </Typography>
-        </CardContent>
-      </Card>
+            </Typography>
 
-   
-    </div>
+            <Typography variant="h6" gutterBottom>
+              BackEnd Skills
+            </Typography>
+            <Typography variant="body1">
+              Node.js,
+              Express, 
+              MongoDB,
+              MySQL, 
+              APIs, 
+              MERN
+              GraphQL
+
+            </Typography>
+          </CardContent>
+
+        </Card>
+      </div>
     </Container>
   );
 };
