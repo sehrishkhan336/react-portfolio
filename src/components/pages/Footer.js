@@ -5,8 +5,8 @@ import { FaStackOverflow } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, height: '65px' }}>
-      <Toolbar sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <AppBar position="fixed" color="transparent" sx={{ top: 'auto', bottom: 0, border: 'none', height: '65px', backgroundColor: 'transparent' }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent' }}>
         <div>
           <IconButton
             aria-label="LinkedIn"

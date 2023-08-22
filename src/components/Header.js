@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import Headerimg from '../images/header.jpg';
 
 const navItems = ['About Me', 'Portfolio','Contact', 'Resume'];
 
@@ -37,7 +38,7 @@ export default function Header({ currentPage, handlePageChange }) {
 
   return (
     <div>
-      <AppBar position="fixed">
+      <AppBar position="fixed" sx={{ backgroundImage: `url(${Headerimg})`, backgroundSize: 'cover', padding: '30px' }}>
         <Toolbar>
           <IconButton
             color="inherit"
