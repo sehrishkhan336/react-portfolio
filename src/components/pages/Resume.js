@@ -9,9 +9,10 @@ const Resume = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <div style={{ padding: '16px' }}>
-          <Card sx={{ width: 1100, height: 1200, padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', backgroundImage: `url(${BackgroundImage})`, backgroundSize: 'contain', backgroundRepeat:'no-repeat' }}>
-            <Typography variant='h4' gutterBottom style={{ padding: '16px', color: theme.palette.primary.main }}>Resume</Typography>
+
+        <div className="card" style={{ padding: '16px', marginTop: '40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', backgroundImage: `url(${BackgroundImage})`, backgroundSize: 'contain', backgroundRepeat:'no-repeat' }}>
+          
+            <Typography variant='h4' gutterBottom style={{ padding: '16px', color: theme.palette.primary.main, marginTop: '60px' }}>Resume</Typography>
             <Button
               variant="contained"
               color="primary"
@@ -48,8 +49,8 @@ const Resume = () => {
                 <ListItem>* GraphQL</ListItem>
               </List>
             </CardContent>
-          </Card>
-        </div>
+          </div>
+
       </Container>
     </ThemeProvider>
   );

@@ -6,7 +6,6 @@ import profilePicture from '../../images/Profilepic.jpg';
 
 const CardWrapper = styled(Container)(({ theme }) => ({
   maxWidth: 1100,
-  maxHeight: 1100,
   marginTop: theme.spacing(5),
   textAlign: 'center',
 }));
@@ -33,12 +32,12 @@ const ContentWrapper = styled('div')(({ theme }) => ({
 
 export default function AboutMe() {
   return (
-    <Container sx={{ display: 'flex', justifyContent: 'center', width: '100%', height: '100%' }} >
+    <Container sx={{ display: 'flex', justifyContent: 'center', width: '100%' }} >
       <div>
         <CardWrapper>
           <CardContent >
             <HeaderWrapper>
-              <Typography sx={{ marginTop: '2rem' }} variant="h4">About Me</Typography>
+              <Typography sx={{ marginTop: '5rem' }} variant="h4">About Me</Typography>
             </HeaderWrapper>
 
             <div>

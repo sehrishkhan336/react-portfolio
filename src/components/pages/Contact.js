@@ -53,13 +53,13 @@ export default function Contact() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '0' }}>
-                <Card>
-                    <CardMedia>
+            <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="card" style={{ marginTop: '40px' }}>
+                    <CardMedia style={{ }}>
                         <img
                             src={BackgroundImage}
                             alt="contact"
-                            style={{ width: '100%', height: '70%' }}
+                            style={{ width: '90%', height: '70%' }}
                         />
                     </CardMedia>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -117,7 +117,7 @@ export default function Contact() {
                             </Button>
                         </CardContent>
                     </div>
-                </Card>
+                </div>
 
             </Container>
         </ThemeProvider>
