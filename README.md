@@ -35,12 +35,11 @@ This portfolio is designed to provide an overview of my expertise as a web devel
 - React
 - Material-UI
 - React Icons
-- ... (add any additional technologies you used)
 
 ## Usage
 
-1. Clone this repository: `git clone https://github.com/your-username/your-portfolio-repo.git`
-2. Navigate to the project directory: `cd your-portfolio-repo`
+1. Clone this repository: `git clone https://github.com/sehrishkhan336/react-portfolio`
+2. Navigate to the project directory: `cd portfolio-repo`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
 5. Open your browser and visit: [http://localhost:3000](http://localhost:3000)
