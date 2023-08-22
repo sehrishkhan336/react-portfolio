@@ -44,6 +44,11 @@ This portfolio is designed to provide an overview of my expertise as a web devel
 4. Start the development server: `npm start`
 5. Open your browser and visit: [http://localhost:3000](http://localhost:3000)
 
+## Deployed Link:
+https://sehrishkhan336.github.io/react-portfolio
+## Github Link:
+https://github.com/sehrishkhan336/react-portfolio/tree/main
+
 ## Screenshots
 
 Here are some screenshots of the different sections of the portfolio:
