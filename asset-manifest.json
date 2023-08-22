@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/sehrishkhan336/react-portfolio/static/js/main.df5b510f.js",
-    "static/media/splash-image.png": "/sehrishkhan336/react-portfolio/static/media/splash-image.65dc8eb062a4b5c8128b.png",
-    "static/media/music-1.gif": "/sehrishkhan336/react-portfolio/static/media/music-1.304bb2d881d4a2a7044d.gif",
-    "static/media/weather-dashboard.gif": "/sehrishkhan336/react-portfolio/static/media/weather-dashboard.4da4c3186f3c100879b5.gif",
-    "static/media/background.jpg": "/sehrishkhan336/react-portfolio/static/media/background.c8618b726b88403dafd8.jpg",
-    "static/media/workday-scheduler.gif": "/sehrishkhan336/react-portfolio/static/media/workday-scheduler.7e049d775cf718e4ea52.gif",
-    "static/media/doc-talk.gif": "/sehrishkhan336/react-portfolio/static/media/doc-talk.0aabe88aea2e8e5fc7f5.gif",
-    "static/media/Profilepic.jpg": "/sehrishkhan336/react-portfolio/static/media/Profilepic.b547daffafc081b88137.jpg",
-    "static/media/Sehrish-Khan.pdf": "/sehrishkhan336/react-portfolio/static/media/Sehrish-Khan.da8fc0199ec157acabef.pdf",
-    "static/media/tic-tac-toe.gif": "/sehrishkhan336/react-portfolio/static/media/tic-tac-toe.8a6feca64cfda3756490.gif",
-    "index.html": "/sehrishkhan336/react-portfolio/index.html",
-    "main.df5b510f.js.map": "/sehrishkhan336/react-portfolio/static/js/main.df5b510f.js.map"
+    "main.js": "/react-portfolio/static/js/main.589cbc22.js",
+    "static/media/splash-image.png": "/react-portfolio/static/media/splash-image.65dc8eb062a4b5c8128b.png",
+    "static/media/music-1.gif": "/react-portfolio/static/media/music-1.304bb2d881d4a2a7044d.gif",
+    "static/media/weather-dashboard.gif": "/react-portfolio/static/media/weather-dashboard.4da4c3186f3c100879b5.gif",
+    "static/media/background.jpg": "/react-portfolio/static/media/background.c8618b726b88403dafd8.jpg",
+    "static/media/workday-scheduler.gif": "/react-portfolio/static/media/workday-scheduler.7e049d775cf718e4ea52.gif",
+    "static/media/doc-talk.gif": "/react-portfolio/static/media/doc-talk.0aabe88aea2e8e5fc7f5.gif",
+    "static/media/Profilepic.jpg": "/react-portfolio/static/media/Profilepic.b547daffafc081b88137.jpg",
+    "static/media/Sehrish-Khan.pdf": "/react-portfolio/static/media/Sehrish-Khan.da8fc0199ec157acabef.pdf",
+    "static/media/tic-tac-toe.gif": "/react-portfolio/static/media/tic-tac-toe.8a6feca64cfda3756490.gif",
+    "index.html": "/react-portfolio/index.html",
+    "main.589cbc22.js.map": "/react-portfolio/static/js/main.589cbc22.js.map"
   },
   "entrypoints": [
-    "static/js/main.df5b510f.js"
+    "static/js/main.589cbc22.js"
   ]
 }
