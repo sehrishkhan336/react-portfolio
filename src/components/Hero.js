@@ -2,7 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { FiArrowDown } from 'react-icons/fi';
 import './Hero.css';
 
-const TYPED_STRINGS = ['Power BI Expert', 'SQL Specialist', 'Data Storyteller'];
+const TYPED_STRINGS = [
+  'Power BI & DAX',
+  'Data-Driven Decisions',
+  'SQL & Data Modeling',
+  'AI-Powered Analytics',
+  'Microsoft Fabric',
+  'Insight That Drives Action',
+];
 const TYPE_SPEED    = 85;
 const DELETE_SPEED  = 45;
 const PAUSE_FULL    = 1800;

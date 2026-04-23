@@ -145,9 +145,19 @@
   background: rgba(79, 142, 247, 0.08);
 }
 
+/* Two-card layout modifier */
+.projects__grid--two {
+  grid-template-columns: repeat(2, minmax(0, 480px));
+  justify-content: center;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
   .projects__grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+}
+
+@media (max-width: 860px) {
+  .projects__grid--two { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
