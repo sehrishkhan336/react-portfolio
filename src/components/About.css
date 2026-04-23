@@ -1,0 +1,131 @@
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about {
+  background: var(--color-bg-alt);
+}
+
+/* ---- Two-column grid ---- */
+.about__grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+/* ---- Photo column ---- */
+.about__photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about__photo-ring {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--gradient-accent);
+  flex-shrink: 0;
+}
+
+.about__photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: var(--color-accent);
+  border: 3px solid var(--color-bg-alt);
+  overflow: hidden;
+}
+
+/* Decorative ring behind the photo */
+.about__photo-accent {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(79, 142, 247, 0.3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 24s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ---- Text column ---- */
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about__bio {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.about__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* ---- Stat counters ---- */
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.about__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 36px 24px;
+  text-align: center;
+}
+
+.about__stat-value {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.about__stat-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 860px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .about__photo-wrap { margin: 0 auto; }
+
+  .about__actions { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .about__stats { grid-template-columns: 1fr; }
+}
