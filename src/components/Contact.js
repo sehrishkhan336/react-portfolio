@@ -66,32 +66,10 @@ export default function Contact() {
       setFields(EMPTY);
       setTouched({});
     } catch (err) {
-      console.error('EmailJS error:', err);
+      console.error('EmailJS:', err);
       setStatus('error');
     }
   };
-
-  const field = (id, name, label, type, placeholder, required = true) => (
-    <div className={`contact__field${touched[name] && errors[name] ? ' contact__field--error' : ''}`}>
-      <label htmlFor={id} className="contact__label">
-        {label}{' '}
-        {required
-          ? <span className="contact__required">*</span>
-          : <span className="contact__optional">(optional)</span>}
-      </label>
-      <input
-        id={id} name={name} type={type}
-        className="contact__input"
-        placeholder={placeholder}
-        value={fields[name]}
-        onChange={onChange}
-        onBlur={onBlur}
-      />
-      {touched[name] && errors[name] && (
-        <span className="contact__error-msg" role="alert">{errors[name]}</span>
-      )}
-    </div>
-  );
 
   return (
     <>
@@ -102,26 +80,20 @@ export default function Contact() {
           <p className="section-subtitle reveal">
             Have a data challenge to solve or a project in mind? My inbox is open.
           </p>
-
           <div className="contact__grid">
 
-            {/* ---- Left: social links ---- */}
             <div className="contact__info reveal">
               <h3 className="contact__info-heading">Let's work together</h3>
               <p className="contact__info-text">
-                Whether you need a BI solution built from scratch, an existing
-                dashboard modernized, or just want to chat about data — I'd love
-                to connect.
+                Whether you need a BI solution built from scratch, an existing dashboard
+                modernized, or just want to chat about data — I'd love to connect.
               </p>
               <ul className="contact__socials">
                 {SOCIAL_LINKS.map(({ label, href, icon, username }) => (
                   <li key={label}>
-                    <a
-                      href={href}
-                      className="contact__social-link glass-card"
+                    <a href={href} className="contact__social-link glass-card"
                       target={href.startsWith('mailto') ? '_self' : '_blank'}
-                      rel="noopener noreferrer"
-                    >
+                      rel="noopener noreferrer">
                       <span className="contact__social-icon">{icon}</span>
                       <div className="contact__social-text">
                         <span className="contact__social-label">{label}</span>
@@ -133,19 +105,13 @@ export default function Contact() {
               </ul>
             </div>
 
-            {/* ---- Right: form ---- */}
             <div className="contact__form-wrap glass-card reveal reveal-delay-2">
               {status === 'success' ? (
                 <div className="contact__success">
                   <div className="contact__success-icon"><FiCheck /></div>
                   <h3 className="contact__success-heading">Message sent!</h3>
-                  <p className="contact__success-text">
-                    Thanks for reaching out — I'll get back to you within 24 hours.
-                  </p>
-                  <button
-                    className="btn-outline"
-                    onClick={() => { setStatus('idle'); setFields(EMPTY); setTouched({}); }}
-                  >
+                  <p className="contact__success-text">Thanks for reaching out — I'll get back to you within 24 hours.</p>
+                  <button className="btn-outline" onClick={() => { setStatus('idle'); setFields(EMPTY); setTouched({}); }}>
                     Send another
                   </button>
                 </div>
@@ -155,86 +121,67 @@ export default function Contact() {
                   {status === 'error' && (
                     <div className="contact__send-error" role="alert">
                       <FiAlertCircle />
-                      <span>
-                        Something went wrong — email me directly at{' '}
-                        <a href="mailto:sehrishkhan336@gmail.com">sehrishkhan336@gmail.com</a>
-                      </span>
+                      <span>Something went wrong — email me at <a href="mailto:sehrishkhan336@gmail.com">sehrishkhan336@gmail.com</a></span>
                     </div>
                   )}
 
                   <div className="contact__row">
-                    {field('cf-name',  'name',  'Name',  'text',  'Jane Smith')}
-                    {field('cf-email', 'email', 'Email', 'email', 'jane@company.com')}
+                    <div className={`contact__field${touched.name && errors.name ? ' contact__field--error' : ''}`}>
+                      <label htmlFor="cf-name" className="contact__label">Name <span className="contact__required">*</span></label>
+                      <input id="cf-name" name="name" type="text" className="contact__input"
+                        placeholder="Jane Smith" value={fields.name} onChange={onChange} onBlur={onBlur} autoComplete="name" />
+                      {touched.name && errors.name && <span className="contact__error-msg" role="alert">{errors.name}</span>}
+                    </div>
+                    <div className={`contact__field${touched.email && errors.email ? ' contact__field--error' : ''}`}>
+                      <label htmlFor="cf-email" className="contact__label">Email <span className="contact__required">*</span></label>
+                      <input id="cf-email" name="email" type="email" className="contact__input"
+                        placeholder="jane@company.com" value={fields.email} onChange={onChange} onBlur={onBlur} autoComplete="email" />
+                      {touched.email && errors.email && <span className="contact__error-msg" role="alert">{errors.email}</span>}
+                    </div>
                   </div>
 
                   <div className="contact__row">
-                    {field('cf-phone', 'phone', 'Phone', 'tel', '+1 (555) 000-0000', false)}
+                    <div className="contact__field">
+                      <label htmlFor="cf-phone" className="contact__label">Phone <span className="contact__optional">(optional)</span></label>
+                      <input id="cf-phone" name="phone" type="tel" className="contact__input"
+                        placeholder="+1 (555) 000-0000" value={fields.phone} onChange={onChange} autoComplete="tel" />
+                    </div>
                     <div className={`contact__field${touched.subject && errors.subject ? ' contact__field--error' : ''}`}>
-                      <label htmlFor="cf-subject" className="contact__label">
-                        Topic <span className="contact__required">*</span>
-                      </label>
-                      <select
-                        id="cf-subject"
-                        name="subject"
-                        className="contact__input contact__select"
-                        value={fields.subject}
-                        onChange={onChange}
-                        onBlur={onBlur}
-                      >
+                      <label htmlFor="cf-subject" className="contact__label">Topic <span className="contact__required">*</span></label>
+                      <select id="cf-subject" name="subject" className="contact__input contact__select"
+                        value={fields.subject} onChange={onChange} onBlur={onBlur}>
                         <option value="" disabled>Select a topic…</option>
                         {SUBJECT_OPTIONS.map(o => <option key={o} value={o}>{o}</option>)}
                       </select>
-                      {touched.subject && errors.subject && (
-                        <span className="contact__error-msg" role="alert">{errors.subject}</span>
-                      )}
+                      {touched.subject && errors.subject && <span className="contact__error-msg" role="alert">{errors.subject}</span>}
                     </div>
                   </div>
 
                   <div className={`contact__field${touched.message && errors.message ? ' contact__field--error' : ''}`}>
-                    <label htmlFor="cf-message" className="contact__label">
-                      Message <span className="contact__required">*</span>
-                    </label>
-                    <textarea
-                      id="cf-message"
-                      name="message"
-                      className="contact__input contact__textarea"
-                      placeholder="Tell me about your project, timeline, or question…"
-                      rows={5}
-                      value={fields.message}
-                      onChange={onChange}
-                      onBlur={onBlur}
-                    />
-                    {touched.message && errors.message && (
-                      <span className="contact__error-msg" role="alert">{errors.message}</span>
-                    )}
+                    <label htmlFor="cf-message" className="contact__label">Message <span className="contact__required">*</span></label>
+                    <textarea id="cf-message" name="message" className="contact__input contact__textarea"
+                      placeholder="Tell me about your project, timeline, or question…" rows={5}
+                      value={fields.message} onChange={onChange} onBlur={onBlur} />
+                    {touched.message && errors.message && <span className="contact__error-msg" role="alert">{errors.message}</span>}
                   </div>
 
-                  <button
-                    type="submit"
-                    className="btn-primary contact__submit"
-                    disabled={status === 'sending'}
-                  >
+                  <button type="submit" className="btn-primary contact__submit" disabled={status === 'sending'}>
                     {status === 'sending'
-                      ? <><span className="contact__spinner" />&nbsp;Sending…</>
+                      ? <><span className="contact__spinner" aria-hidden="true" />&nbsp;Sending…</>
                       : <><FiSend />&nbsp;Send Message</>}
                   </button>
 
                 </form>
               )}
             </div>
-
           </div>
         </div>
       </section>
 
       <footer className="site-footer">
         <div className="container site-footer__inner">
-          <span className="site-footer__name">
-            Sehrish <span className="gradient-text">Khan</span>
-          </span>
-          <span className="site-footer__copy">
-            © {new Date().getFullYear()} · BI Developer &amp; Data Analyst
-          </span>
+          <span className="site-footer__name">Sehrish <span className="gradient-text">Khan</span></span>
+          <span className="site-footer__copy">© {new Date().getFullYear()} · BI Developer &amp; Data Analyst</span>
           <div className="site-footer__icons">
             <a href="https://www.linkedin.com/in/sehrish-khan-63056416/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
             <a href="https://github.com/sehrishkhan336" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FiGithub /></a>
