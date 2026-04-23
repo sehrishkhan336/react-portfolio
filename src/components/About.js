@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { FiUser } from 'react-icons/fi';
+import profilePic from '../images/Profilepic.jpg';
 import './About.css';
 
 const STATS = [
@@ -69,7 +69,7 @@ export default function About() {
           <div className="about__photo-wrap reveal">
             <div className="about__photo-ring">
               <div className="about__photo-placeholder">
-                <FiUser />
+                <img src={profilePic} alt="Sehrish Khan" className="about__photo-img" />
               </div>
             </div>
             {/* Decorative accent ring */}
@@ -96,7 +96,7 @@ export default function About() {
             <div className="about__actions reveal reveal-delay-4">
               <a href="#projects" className="btn-primary">See My Work</a>
               <a
-                href="/Resume/Sehrish-Khan.pdf"
+                href="/Resume/Resume-Sehrish-Khan.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"

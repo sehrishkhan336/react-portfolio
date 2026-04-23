@@ -63,7 +63,7 @@ export default function Navbar({ theme, toggleTheme }) {
           {/* Right-side controls */}
           <div className="navbar__actions">
             <a
-              href="/Resume/Sehrish-Khan.pdf"
+              href="/Resume/Resume-Sehrish-Khan.pdf"
               download
               target="_blank"
               rel="noopener noreferrer"
@@ -103,7 +103,7 @@ export default function Navbar({ theme, toggleTheme }) {
           ))}
           <li>
             <a
-              href="/Resume/Sehrish-Khan.pdf"
+              href="/Resume/Resume-Sehrish-Khan.pdf"
               download
               target="_blank"
               rel="noopener noreferrer"
