@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2 · Sprint 4 Complete — AI-First Autograder</title>
+<style>
+  :root {
+    --bg-deep: #050f0a;
+    --bg-mid: #0a1f18;
+    --bg-card: rgba(16, 38, 30, 0.5);
+    --bg-card-hover: rgba(22, 52, 40, 0.7);
+    --green: #4ade80;
+    --green-glow: #22c55e;
+    --green-dim: #166534;
+    --blue: #60a5fa;
+    --blue-dim: #1e3a5f;
+    --purple: #c084fc;
+    --purple-dim: #4a2d5f;
+    --orange: #fb923c;
+    --orange-dim: #5c3a1e;
+    --gray: #9ca3af;
+    --gray-dim: #374151;
+    --text: #e2f1ea;
+    --text-dim: #8ba99a;
+    --border: rgba(74, 222, 128, 0.2);
+    --border-soft: rgba(255, 255, 255, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: 
+      radial-gradient(ellipse 80% 50% at top, rgba(34, 197, 94, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(34, 197, 94, 0.04) 0%, transparent 50%),
+      linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-deep) 100%);
+    background-attachment: fixed;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ==================== HEADER ==================== */
+  header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .phase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    color: var(--green);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    font-weight: 600;
+    background: rgba(16, 38, 30, 0.4);
+    backdrop-filter: blur(10px);
+    margin-bottom: 24px;
+  }
+
+  .phase-badge .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 12px var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  .main-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    text-shadow: 0 0 40px rgba(74, 222, 128, 0.3);
+  }
+
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 15px;
+    letter-spacing: 0.06em;
+  }
+
+  .subtitle span {
+    color: var(--green);
+    margin: 0 6px;
+  }
+
+  /* ==================== TASK BADGES ==================== */
+  .task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 60px;
+    animation: fadeIn 1s ease-out 0.2s both;
+  }
+
+  .task {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 99px;
+    border: 1px solid;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .task:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  .task .tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .task .check {
+    margin-left: auto;
+    font-size: 14px;
+    color: var(--green);
+    opacity: 0.9;
+  }
+
+  .task.t1 { border-color: rgba(74, 222, 128, 0.35); }
+  .task.t1 .tag { background: var(--green-glow); }
+  .task.t1:hover { background: rgba(34, 197, 94, 0.12); box-shadow: 0 8px 24px rgba(34, 197, 94, 0.2); }
+
+  .task.t2 { border-color: rgba(96, 165, 250, 0.35); }
+  .task.t2 .tag { background: var(--blue); }
+  .task.t2:hover { background: rgba(96, 165, 250, 0.12); box-shadow: 0 8px 24px rgba(96, 165, 250, 0.2); }
+
+  .task.t3 { border-color: rgba(192, 132, 252, 0.35); }
+  .task.t3 .tag { background: var(--purple); }
+  .task.t3:hover { background: rgba(192, 132, 252, 0.12); box-shadow: 0 8px 24px rgba(192, 132, 252, 0.2); }
+
+  .task.t4 { border-color: rgba(251, 146, 60, 0.35); }
+  .task.t4 .tag { background: var(--orange); }
+  .task.t4:hover { background: rgba(251, 146, 60, 0.12); box-shadow: 0 8px 24px rgba(251, 146, 60, 0.2); }
+
+  .task.t5 { border-color: rgba(156, 163, 175, 0.35); }
+  .task.t5 .tag { background: var(--gray); color: #111; }
+  .task.t5:hover { background: rgba(156, 163, 175, 0.12); box-shadow: 0 8px 24px rgba(156, 163, 175, 0.2); }
+
+  .task.t6 { border-color: rgba(74, 222, 128, 0.45); background: rgba(34, 197, 94, 0.08); }
+  .task.t6 .tag { background: linear-gradient(135deg, var(--green) 0%, var(--green-glow) 100%); }
+  .task.t6:hover { background: rgba(34, 197, 94, 0.18); box-shadow: 0 8px 24px rgba(34, 197, 94, 0.25); }
+
+  /* ==================== FLOW DIAGRAM ==================== */
+  .flow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 20px 0 40px;
+    animation: fadeIn 1.2s ease-out 0.4s both;
+  }
+
+  .flow-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .node {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    min-width: 200px;
+  }
+
+  .node:hover {
+    transform: translateY(-2px);
+    border-color: var(--green);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.25);
+  }
+
+  .node .icon {
+    font-size: 22px;
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.3));
+  }
+
+  .node .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green);
+    line-height: 1.2;
+  }
+
+  .node .sublabel {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: "SF Mono", Monaco, monospace;
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  .node .tag-mini {
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .node.agent { border-color: rgba(74, 222, 128, 0.5); background: rgba(34, 197, 94, 0.1); }
+  .node.agent .label { color: var(--green); font-weight: 700; }
+
+  .node.secondary .label { color: var(--text); font-weight: 500; }
+
+  .node.shadow { border-color: rgba(156, 163, 175, 0.3); }
+  .node.shadow .icon { color: var(--gray); filter: none; }
+
+  .node.confidence { border-color: rgba(74, 222, 128, 0.3); }
+
+  .node.callback { border-color: rgba(156, 163, 175, 0.3); }
+  .node.callback .icon { color: var(--gray); filter: none; }
+
+  .node.regrade { border-color: rgba(251, 146, 60, 0.4); background: rgba(251, 146, 60, 0.06); }
+  .node.regrade .icon { color: var(--orange); filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.3)); }
+
+  .node.tuning { border-color: rgba(192, 132, 252, 0.5); background: rgba(192, 132, 252, 0.08); }
+  .node.tuning .icon { color: var(--purple); filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.3)); }
+
+  .node.feedback { border-color: rgba(74, 222, 128, 0.3); }
+
+  .node.escalation { border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.05); }
+  .node.escalation .label { color: #fca5a5; }
+  .node.escalation .icon { filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.3)); }
+
+  .node.validated {
+    border-color: var(--green);
+    background: rgba(34, 197, 94, 0.12);
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.2);
+  }
+  .node.validated .label { color: var(--green); font-weight: 700; }
+
+  /* ==================== CONNECTOR LINES ==================== */
+  .connector {
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(to bottom, var(--border) 0%, var(--green) 100%);
+    opacity: 0.5;
+  }
+
+  .connector-fan {
+    width: 100%;
+    height: 20px;
+    position: relative;
+  }
+
+  /* ==================== METRICS ==================== */
+  .metrics-section {
+    margin-top: 60px;
+    padding: 32px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1.4s ease-out 0.6s both;
+  }
+
+  .metrics-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    color: var(--text-dim);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+  }
+
+  .metric {
+    text-align: center;
+    padding: 16px 12px;
+    border-radius: 12px;
+    background: rgba(16, 38, 30, 0.4);
+    border: 1px solid var(--border-soft);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .metric:hover {
+    background: rgba(16, 38, 30, 0.7);
+    border-color: var(--border);
+    transform: translateY(-2px);
+  }
+
+  .metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .metric-req {
+    font-size: 10px;
+    color: var(--text-dim);
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+
+  /* ==================== STATUS BANNER ==================== */
+  .status-banner {
+    margin-top: 40px;
+    padding: 20px 28px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(34, 197, 94, 0.02) 100%);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    animation: fadeIn 1.6s ease-out 0.8s both;
+  }
+
+  .status-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .status-content h3 {
+    font-size: 15px;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  .status-content p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ==================== ANIMATIONS ==================== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+  }
+
+  @keyframes flow {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+  }
+
+  /* ==================== RESPONSIVE ==================== */
+  @media (max-width: 640px) {
+    body { padding: 20px 10px; }
+    .main-title { font-size: 32px; }
+    .node { min-width: 160px; padding: 12px 16px; }
+    .node .label { font-size: 12px; }
+    .node .sublabel { font-size: 10px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ==================== TOOLTIPS ==================== */
+  [data-tip] {
+    position: relative;
+  }
+
+  [data-tip]::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--border);
+    color: var(--green);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 10;
+  }
+
+  [data-tip]:hover::after {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="phase-badge">
+      <span class="pulse"></span>
+      PHASE 2 · SPRINT 4 COMPLETE
+    </div>
+    <h1 class="main-title">Sprint 4 — AI Training ✅</h1>
+    <div class="subtitle">
+      Benchmark<span>·</span>Validate<span>·</span>Tune<span>·</span>Internal Testing
+    </div>
+  </header>
+
+  <!-- TASK BADGES -->
+  <div class="task-grid">
+    <div class="task t1" data-tip="92% exact match vs manual grades">
+      <span class="tag">T1</span>
+      <span>Benchmark Accuracy</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="task t2" data-tip="87% agreement rate between AI and Python">
+      <span class="tag">T2</span>
+      <span>Shadow Log Analysis</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="task t3" data-tip="Rubric refinement + confidence scoring">
+      <span class="tag">T3</span>
+      <span>Prompt Tuning</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="task t4" data-tip="5 students regraded, emails sent">
+      <span class="tag">T4</span>
+      <span>Regrade Flagged</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="task t5" data-tip="Python as optional AI consultant">
+      <span class="tag">T5</span>
+      <span>Python Callback</span>
+      <span class="check">✓</span>
+    </div>
+    <div class="task t6" data-tip="All production gates validated">
+      <span class="tag">T6</span>
+      <span>Production Gate</span>
+      <span class="check">✓</span>
+    </div>
+  </div>
+
+  <!-- FLOW DIAGRAM -->
+  <div class="flow">
+
+    <div class="flow-row">
+      <div class="node secondary">
+        <span class="icon">📥</span>
+        <div>
+          <div class="label">Student Submission</div>
+          <div class="sublabel">ZIP / SQL / DOCX</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <div class="flow-row">
+      <div class="node secondary">
+        <span class="icon">📁</span>
+        <div>
+          <div class="label">File I/O Layer</div>
+          <div class="sublabel">file_tools.py</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <div class="flow-row">
+      <div class="node agent">
+        <span class="tag-mini" style="background: var(--green-glow);">T1</span>
+        <span class="icon">🤖</span>
+        <div>
+          <div class="label">AI Agent</div>
+          <div class="sublabel">autograde_agent.py</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <div class="flow-row">
+      <div class="node shadow">
+        <span class="tag-mini" style="background: var(--blue);">T2</span>
+        <span class="icon">👁</span>
+        <div>
+          <div class="label">Shadow Logger</div>
+          <div class="sublabel">Python — analyzed</div>
+        </div>
+      </div>
+      <div class="node confidence">
+        <span class="icon">⚖️</span>
+        <div>
+          <div class="label">Confidence Check</div>
+          <div class="sublabel">Score: 0.0 – 1.0</div>
+        </div>
+      </div>
+      <div class="node callback">
+        <span class="tag-mini" style="background: var(--gray); color: #111;">T5</span>
+        <span class="icon">🔄</span>
+        <div>
+          <div class="label">Python Callback</div>
+          <div class="sublabel">Optional 2nd opinion</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <div class="flow-row">
+      <div class="node regrade">
+        <span class="tag-mini" style="background: var(--orange);">T4</span>
+        <span class="icon">🔁</span>
+        <div>
+          <div class="label">Regrade Flagged</div>
+          <div class="sublabel">5 students · done</div>
+        </div>
+      </div>
+      <div class="node tuning">
+        <span class="tag-mini" style="background: var(--purple);">T3</span>
+        <span class="icon">🎯</span>
+        <div>
+          <div class="label">Prompt Tuning</div>
+          <div class="sublabel">Rubric refined</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <div class="flow-row">
+      <div class="node feedback">
+        <span class="icon">✉️</span>
+        <div>
+          <div class="label">Student Feedback</div>
+          <div class="sublabel">HTML email · grades ≥ 3</div>
+        </div>
+      </div>
+      <div class="node escalation">
+        <span class="icon">🚨</span>
+        <div>
+          <div class="label">Instructor Escalation</div>
+          <div class="sublabel">Grade 1–2 only</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <div class="flow-row">
+      <div class="node validated">
+        <span class="icon">✅</span>
+        <div>
+          <div class="label">Validated Pipeline</div>
+          <div class="sublabel">AI-first · pending internal testing</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- METRICS -->
+  <div class="metrics-section">
+    <div class="metrics-title">SPRINT 4 VALIDATION RESULTS</div>
+    <div class="metrics-grid">
+      <div class="metric" data-tip="Benchmark exact-match rate">
+        <div class="metric-value">92%</div>
+        <div class="metric-label">Accuracy</div>
+        <div class="metric-req">Required ≥ 90%</div>
+      </div>
+      <div class="metric" data-tip="Agent vs Python hybrid">
+        <div class="metric-value">87%</div>
+        <div class="metric-label">Agreement</div>
+        <div class="metric-req">Required ≥ 85%</div>
+      </div>
+      <div class="metric" data-tip="Benchmark false rejections">
+        <div class="metric-value">0</div>
+        <div class="metric-label">False Rejects</div>
+        <div class="metric-req">Required: 0</div>
+      </div>
+      <div class="metric" data-tip="Unit test suite">
+        <div class="metric-value">74/74</div>
+        <div class="metric-label">Tests</div>
+        <div class="metric-req">All passing</div>
+      </div>
+      <div class="metric" data-tip="Students with corrected grades">
+        <div class="metric-value">5</div>
+        <div class="metric-label">Regraded</div>
+        <div class="metric-req">1–2 → 3–4</div>
+      </div>
+      <div class="metric" data-tip="Production readiness criteria">
+        <div class="metric-value">5/5</div>
+        <div class="metric-label">Gates Met</div>
+        <div class="metric-req">All validated</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS BANNER -->
+  <div class="status-banner">
+    <div class="status-icon">🔍</div>
+    <div class="status-content">
+      <h3>Next: Internal Testing Before Production Rollout</h3>
+      <p>Sprint 4 deliverables are complete and all validation gates have passed. The project lead will now conduct end-to-end internal testing on live-system behavior. No production deployment will occur until internal testing is signed off. A follow-up update will be posted when ready to schedule production.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Subtle interactivity — tasks fan in on load
+  document.querySelectorAll('.task, .node, .metric').forEach((el, i) => {
+    el.style.animationDelay = `${i * 0.04}s`;
+  });
+
+  // Click feedback for nodes
+  document.querySelectorAll('.node').forEach(node => {
+    node.addEventListener('click', () => {
+      node.style.transform = 'scale(0.97)';
+      setTimeout(() => node.style.transform = '', 150);
+    });
+  });
+</script>
+
+</body>
+</html>
