@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-portfolio/static/css/main.333a033d.css",
-    "main.js": "/react-portfolio/static/js/main.553ffc9c.js",
+    "main.css": "/react-portfolio/static/css/main.47aaee4b.css",
+    "main.js": "/react-portfolio/static/js/main.cef43a8c.js",
     "static/media/EV_Registration_Dashboard_Interaction_final.gif": "/react-portfolio/static/media/EV_Registration_Dashboard_Interaction_final.0b69881afd3960034618.gif",
     "static/media/Profilepic.jpg": "/react-portfolio/static/media/Profilepic.aefc87388b8f68d3fd70.jpg",
     "static/media/AutograderVisual.png": "/react-portfolio/static/media/AutograderVisual.5bfe98322c2014f254a1.png",
     "index.html": "/react-portfolio/index.html",
-    "main.333a033d.css.map": "/react-portfolio/static/css/main.333a033d.css.map",
-    "main.553ffc9c.js.map": "/react-portfolio/static/js/main.553ffc9c.js.map"
+    "main.47aaee4b.css.map": "/react-portfolio/static/css/main.47aaee4b.css.map",
+    "main.cef43a8c.js.map": "/react-portfolio/static/js/main.cef43a8c.js.map"
   },
   "entrypoints": [
-    "static/css/main.333a033d.css",
-    "static/js/main.553ffc9c.js"
+    "static/css/main.47aaee4b.css",
+    "static/js/main.cef43a8c.js"
   ]
 }
