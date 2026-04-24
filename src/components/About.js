@@ -95,15 +95,6 @@ export default function About() {
 
             <div className="about__actions reveal reveal-delay-4">
               <a href="#projects" className="btn-primary">See My Work</a>
-              <a
-                href="/Resume/Resume-Sehrish-Khan.pdf"
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline"
-              >
-                Download CV
-              </a>
             </div>
           </div>
         </div>
