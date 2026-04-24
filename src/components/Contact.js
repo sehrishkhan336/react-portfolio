@@ -6,7 +6,7 @@ import './Contact.css';
 const SOCIAL_LINKS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sehrish-khan-63056416/', icon: <FiLinkedin />, username: 'sehrish-khan-63056416' },
   { label: 'GitHub',   href: 'https://github.com/sehrishkhan336',                  icon: <FiGithub />,   username: '@sehrishkhan336' },
-  { label: 'Email',    href: 'mailto:sehrishkhan336@gmail.com',                    icon: <FiMail />,     username: 'sehrishkhan336@gmail.com' },
+  { label: 'Email',    href: 'mailto:sehrishkhan.hjim@gmail.com',                    icon: <FiMail />,     username: 'sehrishkhan.hjim@gmail.com' },
 ];
 
 const SUBJECT_OPTIONS = [
@@ -121,7 +121,7 @@ export default function Contact() {
                   {status === 'error' && (
                     <div className="contact__send-error" role="alert">
                       <FiAlertCircle />
-                      <span>Something went wrong — email me at <a href="mailto:sehrishkhan336@gmail.com">sehrishkhan336@gmail.com</a></span>
+                      <span>Something went wrong — email me at <a href="mailto:sehrishkhan.hjim@gmail.com">sehrishkhan.hjim@gmail.com</a></span>
                     </div>
                   )}
 
@@ -185,7 +185,7 @@ export default function Contact() {
           <div className="site-footer__icons">
             <a href="https://www.linkedin.com/in/sehrish-khan-63056416/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
             <a href="https://github.com/sehrishkhan336" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FiGithub /></a>
-            <a href="mailto:sehrishkhan336@gmail.com" aria-label="Email"><FiMail /></a>
+            <a href="mailto:sehrishkhan.hjim@gmail.com" aria-label="Email"><FiMail /></a>
           </div>
         </div>
       </footer>

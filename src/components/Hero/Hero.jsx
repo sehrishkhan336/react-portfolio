@@ -136,7 +136,7 @@ const faces = [
 ];
 
 const stats = [
-  { number: '5',   label: 'years in BI'        },
+  { number: '5',   label: 'years in Data'        },
   { number: '10+', label: 'projects delivered'  },
   { number: '3',   label: 'industries served'   },
   { number: '6+',  label: 'tools mastered'      },

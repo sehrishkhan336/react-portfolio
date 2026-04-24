@@ -3,7 +3,7 @@ import profilePic from '../images/Profilepic.jpg';
 import './About.css';
 
 const STATS = [
-  { value: 5,  suffix: '+', label: 'Years Experience' },
+  { value: 5,  suffix: '+', label: 'Years In Data' },
   { value: 10, suffix: '+', label: 'Projects Delivered' },
   { value: 3,  suffix: '',  label: 'Industries Served' },
 ];

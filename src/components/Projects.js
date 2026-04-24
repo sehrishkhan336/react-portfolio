@@ -11,17 +11,18 @@ const PROJECTS = [
     tags:         ['Python', 'OpenAI API', 'SQL Server', 'Microsoft Fabric'],
     image:        AutograderImg,
     imageAlt:     'AI Autograder dashboard screenshot',
+    imgClass:     'projects__card-img--autograder',
     video:        '/react-portfolio/autograderDemo.mp4',
     github:       'https://github.com/sehrishkhan336',
     demo:         '/react-portfolio/sprint4_progress.html',
-    demoLabel:    'View AI Demo',
+    demoLabel:    'View AI Structure',
     demoDisabled: false,
   },
   {
     category:     'Data Analytics',
     title:        'EV Registrations Over Time',
     description:  'End-to-end data analysis of electric vehicle registration trends across the United States. Cleaned and transformed raw DMV datasets, built time-series visualizations showing adoption curves by state and vehicle type, and surfaced policy-driven inflection points in EV growth.',
-    tags:         ['Python', 'Pandas', 'Matplotlib', 'Power BI', 'Data Wrangling'],
+    tags:         ['SQL Server', 'Power BI', 'Data Wrangling', 'Pandas'],
     image:        evGif,
     imageAlt:     'EV Registrations interactive dashboard demo',
     embedUrl:     'https://app.powerbi.com/view?r=eyJrIjoiYzQ2MDRhNmMtM2U4OC00NjY2LTlkYWMtOWY2OGQzNjdkNTk5IiwidCI6ImYxYWQ2ODFmLTZmNjItNDNhOS04MjQxLTA3MDMxNjBlMTM0OCIsImMiOjN9&embedImagePlaceholder=true',
@@ -50,7 +51,7 @@ export default function Projects() {
         </p>
 
         <div className="projects__grid projects__grid--two">
-          {PROJECTS.map(({ category, title, description, tags, image, imageAlt, embedUrl, video, github, demo, demoLabel, demoDisabled }, i) => {
+          {PROJECTS.map(({ category, title, description, tags, image, imageAlt, imgClass, video, github, demo, demoLabel, demoDisabled }, i) => {
             const catStyle = CATEGORY_COLORS[category] ?? CATEGORY_COLORS['Data Analytics'];
             return (
               <article
@@ -59,23 +60,11 @@ export default function Projects() {
               >
                 <div className="projects__card-stripe" aria-hidden="true" />
 
-                {embedUrl ? (
-                  <iframe
-                    title="EV Registrations Power BI Dashboard"
-                    src={embedUrl}
-                    width="100%"
-                    height="180"
-                    frameBorder="0"
-                    allowFullScreen={true}
-                    style={{ borderRadius: '8px', marginBottom: '16px', pointerEvents: 'none' }}
-                  />
-                ) : (
-                  <img
-                    src={image}
-                    alt={imageAlt}
-                    className="projects__card-img"
-                  />
-                )}
+                <img
+                  src={image}
+                  alt={imageAlt}
+                  className={`projects__card-img${imgClass ? ` ${imgClass}` : ''}`}
+                />
 
                 <span
                   className="projects__category"

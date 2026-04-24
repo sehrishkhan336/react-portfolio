@@ -50,6 +50,12 @@
   display: block;
 }
 
+/* Autograder portrait image — crop from top, dark bg fills any gap */
+.projects__card-img--autograder {
+  object-position: center top;
+  background: linear-gradient(135deg, #0B1220 0%, #1a2744 100%);
+}
+
 /* Nudge remaining content to have padding */
 .projects__category,
 .projects__title,
