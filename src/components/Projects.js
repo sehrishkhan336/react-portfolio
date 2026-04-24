@@ -1,5 +1,5 @@
 import { FiExternalLink, FiGithub, FiPlay } from 'react-icons/fi';
-import autograderImg from '../assets/DashboardVisual.png';
+import AutograderImg from '../assets/AutograderVisual.png';
 import evGif         from '../assets/EV_Registration_Dashboard_Interaction_final.gif';
 import './Projects.css';
 
@@ -8,10 +8,10 @@ const PROJECTS = [
     category:     'AI Engineering',
     title:        'AI-Powered Homework Autograder',
     description:  'Architected and built an AI grading system at Colaberry that evolved from a Python/regex baseline into a full OpenAI tool-use agent. The agent evaluates concept mastery (not just answer matching), flags uncertain submissions for manual review, and runs a shadow-grading pipeline to validate accuracy before retiring the old system.',
-    tags:         ['Python', 'OpenAI API', 'SQL Server', 'Microsoft Fabric', 'Pandas'],
-    image:        autograderImg,
+    tags:         ['Python', 'OpenAI API', 'SQL Server', 'Microsoft Fabric'],
+    image:        AutograderImg,
     imageAlt:     'AI Autograder dashboard screenshot',
-    video:        '/autograder-demo.mp4',
+    video:        '/react-portfolio/autograderDemo.mp4',
     github:       'https://github.com/sehrishkhan336',
     demo:         '/react-portfolio/sprint4_progress.html',
     demoLabel:    'View AI Demo',
@@ -21,15 +21,15 @@ const PROJECTS = [
     category:     'Data Analytics',
     title:        'EV Registrations Over Time',
     description:  'End-to-end data analysis of electric vehicle registration trends across the United States. Cleaned and transformed raw DMV datasets, built time-series visualizations showing adoption curves by state and vehicle type, and surfaced policy-driven inflection points in EV growth.',
-    tags:         ['Python', 'Pandas', 'Matplotlib', 'Plotly', 'Data Wrangling'],
+    tags:         ['Python', 'Pandas', 'Matplotlib', 'Power BI', 'Data Wrangling'],
     image:        evGif,
     imageAlt:     'EV Registrations interactive dashboard demo',
+    embedUrl:     'https://app.powerbi.com/view?r=eyJrIjoiYzQ2MDRhNmMtM2U4OC00NjY2LTlkYWMtOWY2OGQzNjdkNTk5IiwidCI6ImYxYWQ2ODFmLTZmNjItNDNhOS04MjQxLTA3MDMxNjBlMTM0OCIsImMiOjN9&embedImagePlaceholder=true',
     video:        null,
     github:       'https://github.com/sehrishkhan336',
-    // TODO: replace '#' with public pbix or Power BI embed link when provided
-    demo:         '#',
-    demoLabel:    'Dashboard Coming Soon',
-    demoDisabled: true,
+    demo:         'https://app.powerbi.com/view?r=eyJrIjoiYzQ2MDRhNmMtM2U4OC00NjY2LTlkYWMtOWY2OGQzNjdkNTk5IiwidCI6ImYxYWQ2ODFmLTZmNjItNDNhOS04MjQxLTA3MDMxNjBlMTM0OCIsImMiOjN9&embedImagePlaceholder=true',
+    demoLabel:    'View Live Dashboard',
+    demoDisabled: false,
   },
 ];
 
@@ -50,7 +50,7 @@ export default function Projects() {
         </p>
 
         <div className="projects__grid projects__grid--two">
-          {PROJECTS.map(({ category, title, description, tags, image, imageAlt, video, github, demo, demoLabel, demoDisabled }, i) => {
+          {PROJECTS.map(({ category, title, description, tags, image, imageAlt, embedUrl, video, github, demo, demoLabel, demoDisabled }, i) => {
             const catStyle = CATEGORY_COLORS[category] ?? CATEGORY_COLORS['Data Analytics'];
             return (
               <article
@@ -59,11 +59,23 @@ export default function Projects() {
               >
                 <div className="projects__card-stripe" aria-hidden="true" />
 
-                <img
-                  src={image}
-                  alt={imageAlt}
-                  className="projects__card-img"
-                />
+                {embedUrl ? (
+                  <iframe
+                    title="EV Registrations Power BI Dashboard"
+                    src={embedUrl}
+                    width="100%"
+                    height="180"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    style={{ borderRadius: '8px', marginBottom: '16px', pointerEvents: 'none' }}
+                  />
+                ) : (
+                  <img
+                    src={image}
+                    alt={imageAlt}
+                    className="projects__card-img"
+                  />
+                )}
 
                 <span
                   className="projects__category"
@@ -105,7 +117,7 @@ export default function Projects() {
                   {video && (
                     <a
                       href={video}
-                      className="btn-outline projects__btn"
+                      className="btn-secondary projects__btn"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
