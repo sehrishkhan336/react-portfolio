@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { FiLinkedin, FiGithub, FiMail, FiSend, FiCheck, FiAlertCircle } from 'react-icons/fi';
 import './Contact.css';
@@ -37,6 +37,10 @@ export default function Contact() {
   const [touched, setTouched] = useState({});
   const [status,  setStatus]  = useState('idle');
 
+  useEffect(() => {
+    emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+  }, []);
+
   const errors    = getErrors(fields);
   const hasErrors = Object.keys(errors).length > 0;
 
@@ -48,11 +52,13 @@ export default function Contact() {
     setTouched({ name: true, email: true, subject: true, message: true });
     if (hasErrors) return;
     setStatus('sending');
+
     try {
-      await emailjs.send(
+      const result = await emailjs.send(
         process.env.REACT_APP_EMAILJS_SERVICE_ID,
         process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         {
+          name:       fields.name,
           from_name:  fields.name,
           from_email: fields.email,
           phone:      fields.phone || 'Not provided',
@@ -62,11 +68,13 @@ export default function Contact() {
         },
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       );
+      console.log('EmailJS OK:', result.status, result.text);
       setStatus('success');
       setFields(EMPTY);
       setTouched({});
     } catch (err) {
-      console.error('EmailJS:', err);
+      console.error('EmailJS error status:', err?.status);
+      console.error('EmailJS error text:', err?.text);
       setStatus('error');
     }
   };

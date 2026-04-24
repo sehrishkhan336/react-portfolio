@@ -79,7 +79,7 @@ export default function About() {
           {/* Text column */}
           <div className="about__text">
             <p className="about__bio reveal reveal-delay-1">
-              I'm a BI Developer and Data Analyst with over 5 years of experience
+              I'm a Business Intelligence Developer and Data Analyst with over 5 years of experience
               transforming complex datasets into clear, actionable dashboards and
               reports that drive real business decisions.
             </p>
