@@ -68,13 +68,10 @@ export default function Contact() {
         },
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       );
-      console.log('EmailJS OK:', result.status, result.text);
       setStatus('success');
       setFields(EMPTY);
       setTouched({});
     } catch (err) {
-      console.error('EmailJS error status:', err?.status);
-      console.error('EmailJS error text:', err?.text);
       setStatus('error');
     }
   };
