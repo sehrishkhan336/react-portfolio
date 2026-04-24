@@ -1,9 +1,10 @@
 {
-  "homepage":"https://sehrishkhan336.github.io/react-portfolio",
+  "homepage": "https://sehrishkhan336.github.io/react-portfolio",
   "name": "portfolio-react",
   "version": "0.1.0",
   "description": "This project is a material ui portfolio",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",

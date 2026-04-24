@@ -1,0 +1,197 @@
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 22px 0;
+  transition: padding var(--transition), background var(--transition),
+              border-color var(--transition), box-shadow var(--transition);
+}
+
+/* Glass effect activates after scroll */
+.navbar--scrolled {
+  padding: 12px 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ---- Logo ---- */
+.navbar__logo {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity var(--transition);
+}
+
+.navbar__logo:hover { opacity: 0.8; }
+
+/* ---- Desktop nav links ---- */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.navbar__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  transition: color var(--transition), background var(--transition);
+}
+
+.navbar__link:hover {
+  color: var(--color-text);
+  background: var(--color-surface-hover);
+}
+
+.navbar__link--active {
+  color: var(--color-accent);
+  background: rgba(79, 142, 247, 0.1);
+}
+
+/* ---- Right-side controls ---- */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.navbar__icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition),
+              color var(--transition);
+}
+
+.navbar__icon-btn:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Resume pill button */
+.navbar__resume-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 18px;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.navbar__resume-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* Hamburger hidden on desktop */
+.navbar__hamburger { display: none; }
+
+/* ============================================================
+   MOBILE SLIDE-IN DRAWER
+   ============================================================ */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  z-index: 999;
+  background: var(--color-bg-alt);
+  border-left: 1px solid var(--glass-border);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 96px 24px 40px;
+}
+
+.mobile-menu--open { transform: translateX(0); }
+
+.mobile-menu__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-menu__link {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  transition: color var(--transition), background var(--transition);
+}
+
+.mobile-menu__link:hover { color: var(--color-text); background: var(--color-surface); }
+.mobile-menu__link--active { color: var(--color-accent); background: rgba(79, 142, 247, 0.08); }
+
+.mobile-menu__link--resume {
+  color: var(--color-accent);
+  font-weight: 600;
+  border: 1.5px solid var(--color-accent);
+  margin-top: 12px;
+  text-align: center;
+}
+
+.mobile-menu__link--resume:hover {
+  background: rgba(79, 142, 247, 0.1);
+  color: var(--color-accent);
+}
+
+/* Backdrop overlay */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ============================================================
+   RESPONSIVE — collapse links to hamburger
+   ============================================================ */
+@media (max-width: 768px) {
+  .navbar__links    { display: none; }
+  .navbar__hamburger { display: flex; border-radius: var(--radius-sm); }
+}

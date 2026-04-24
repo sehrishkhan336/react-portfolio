@@ -1,0 +1,119 @@
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills {
+  background: var(--color-bg);
+}
+
+/* ---- 4-column grid ---- */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ---- Individual card ---- */
+.skills__card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 22px 22px;
+}
+
+/* Icon */
+.skills__icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  transition: transform var(--transition);
+}
+
+.skills__card:hover .skills__icon {
+  transform: scale(1.12);
+}
+
+/* Name + badge row */
+.skills__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.skills__name {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Level badge */
+.skills__badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.skills__badge--advanced {
+  background: rgba(0, 212, 170, 0.12);
+  color: var(--color-accent-alt);
+  border: 1px solid rgba(0, 212, 170, 0.25);
+}
+
+.skills__badge--intermediate {
+  background: rgba(79, 142, 247, 0.1);
+  color: var(--color-accent);
+  border: 1px solid rgba(79, 142, 247, 0.2);
+}
+
+/* ---- Progress bar ---- */
+.skills__bar-track {
+  height: 5px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.skills__bar-fill {
+  height: 100%;
+  width: 0;                               /* starts at 0 */
+  border-radius: var(--radius-full);
+  background: var(--gradient-accent);
+  transition: width 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When section is in view, expand each bar to its target width */
+.skills--animated .skills__bar-fill {
+  width: var(--bar-pct);
+}
+
+/* Stagger each bar's animation start */
+.skills__grid .skills__card:nth-child(1) .skills__bar-fill { transition-delay: 0.05s; }
+.skills__grid .skills__card:nth-child(2) .skills__bar-fill { transition-delay: 0.15s; }
+.skills__grid .skills__card:nth-child(3) .skills__bar-fill { transition-delay: 0.25s; }
+.skills__grid .skills__card:nth-child(4) .skills__bar-fill { transition-delay: 0.35s; }
+.skills__grid .skills__card:nth-child(5) .skills__bar-fill { transition-delay: 0.45s; }
+.skills__grid .skills__card:nth-child(6) .skills__bar-fill { transition-delay: 0.55s; }
+.skills__grid .skills__card:nth-child(7) .skills__bar-fill { transition-delay: 0.65s; }
+.skills__grid .skills__card:nth-child(8) .skills__bar-fill { transition-delay: 0.75s; }
+
+/* Percentage label */
+.skills__pct {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-align: right;
+  margin-top: -6px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .skills__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .skills__grid { grid-template-columns: 1fr; }
+}
