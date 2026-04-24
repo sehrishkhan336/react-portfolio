@@ -40,20 +40,44 @@
   margin-bottom: 4px;
 }
 
-/* ---- Card image ---- */
-.projects__card-img {
+/* ---- Card image visual wrapper ---- */
+.projects__card-visual {
+  position: relative;
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  display: block;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  background: #0d1b2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-/* Autograder portrait image — crop from top, dark bg fills any gap */
-.projects__card-img--autograder {
-  object-position: center top;
-  background: linear-gradient(135deg, #0B1220 0%, #1a2744 100%);
+.projects__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  padding: 6px;
+  box-sizing: border-box;
+  transition: transform 0.4s ease;
+}
+
+.projects__card:hover .projects__card-img {
+  transform: scale(1.03);
+}
+
+.projects__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,10,20,0) 55%,
+    rgba(10,10,20,0.65) 100%
+  );
+  pointer-events: none;
 }
 
 /* Nudge remaining content to have padding */

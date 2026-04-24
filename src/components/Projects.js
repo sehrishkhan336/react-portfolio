@@ -51,7 +51,7 @@ export default function Projects() {
         </p>
 
         <div className="projects__grid projects__grid--two">
-          {PROJECTS.map(({ category, title, description, tags, image, imageAlt, imgClass, video, github, demo, demoLabel, demoDisabled }, i) => {
+          {PROJECTS.map(({ category, title, description, tags, image, imageAlt, video, github, demo, demoLabel, demoDisabled }, i) => {
             const catStyle = CATEGORY_COLORS[category] ?? CATEGORY_COLORS['Data Analytics'];
             return (
               <article
@@ -60,11 +60,14 @@ export default function Projects() {
               >
                 <div className="projects__card-stripe" aria-hidden="true" />
 
-                <img
-                  src={image}
-                  alt={imageAlt}
-                  className={`projects__card-img${imgClass ? ` ${imgClass}` : ''}`}
-                />
+                <div className="projects__card-visual">
+                  <img
+                    src={image}
+                    alt={imageAlt}
+                    className="projects__card-img"
+                  />
+                  <div className="projects__card-overlay" aria-hidden="true" />
+                </div>
 
                 <span
                   className="projects__category"
